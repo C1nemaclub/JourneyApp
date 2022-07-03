@@ -4,6 +4,7 @@ const Post = require('../models/postsModel');
 const User = require('../models/usersModel');
 
 const createPost = asyncHandler(async (req, res) => {
+  console.log(req.body);
   console.log(req.file.path);
 
   if (req.user) {
@@ -35,7 +36,7 @@ const createPost = asyncHandler(async (req, res) => {
 });
 
 const deletePost = asyncHandler(async (req, res) => {
-  //await Post.deleteMany({});
+  //*await Post.deleteMany({});
   const post = await Post.findById({ _id: req.params.id });
   console.log(post);
 
@@ -47,7 +48,7 @@ const deletePost = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('Post not found');
   }
-  //Make sure only the logged user matches the goal user
+  //*Make sure only the logged user matches the goal user
 
   if (post.user.toString() !== req.user.id) {
     res.status(401);
@@ -58,7 +59,42 @@ const deletePost = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id });
 });
 
-const editPost = asyncHandler(async (req, res) => {});
+const editPost = asyncHandler(async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  if (!req.user) {
+    res.status(400);
+    throw new Error('Please log in');
+  }
+
+  //*Make sure only the logged user matches the goal user
+
+  if (post.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('User not authorized');
+  }
+
+  if (!post) {
+    res.status(400);
+    throw new Error('Post not found');
+  }
+
+  //console.log(req.body);
+  console.log(req.file);
+
+  console.log(post.cover);
+
+  post.title = req.body.title;
+  post.description = req.body.description;
+  post.likes = req.body.likes;
+  post.location = req.body.location;
+  post.user = req.user._id;
+  post.cover = req.file === undefined ? post.cover : req.file.path; //* If image wasnt sent, keep the same image
+
+  await post.save();
+
+  console.log(req.params.id);
+  res.status(200).json({ id: req.params.id });
+});
 const getMe = asyncHandler(async (req, res) => {
   if (!req.user) {
     res.status(401);
