@@ -12,7 +12,6 @@ const {
 } = require('../controllers/postsController');
 
 router.post('/create', upload.single('file'), protectRoute, createPost);
-//router.delete('/delete/:id', protectRoute, deletePost);
 router.delete('/delete/:id', protectRoute, deletePost);
 router.put('/edit/:id', upload.single('file'), protectRoute, editPost);
 router.get('/me', protectRoute, getMe);

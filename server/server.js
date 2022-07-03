@@ -19,18 +19,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
-app.use('/user', userRoute);
-app.use('/posts', postRoute);
+app.use('/api/user', userRoute);
+app.use('/api/posts', postRoute);
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', (err) => console.log(err));
 db.on('open', () => console.log('Connected to Mongoose'));
 
+/*
 app.get('/', (req, res) => {
   res.send('Home');
 });
-
+*/
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
