@@ -18,5 +18,35 @@ Content-Type: application/json
 }
 ###
 
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "email": "santiago@gmail.com",
+    "password": "ya"
+}
+###
+
 GET http://localhost:3000/user/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzEzYmQyYzU3MzRlZTk5ZWNiYzIxZCIsImlhdCI6MTY1NjgzMjYxNSwiZXhwIjoxNjU5NDI0NjE1fQ.DcS_0XM-qrQbbwZjshCr5gKLeEIfoXvfaSenWvlYVcY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzEzYmQyYzU3MzRlZTk5ZWNiYzIxZCIsImlhdCI6MTY1NjgzNTA0MCwiZXhwIjoxNjU5NDI3MDQwfQ.CN5etCHfYc3zzJqMGtObnq0HsEOFBy4BkcrXo24puLg
+
+
+
+###
+POST http://localhost:3000/posts/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzEzYmQyYzU3MzRlZTk5ZWNiYzIxZCIsImlhdCI6MTY1NjgzNTA0MCwiZXhwIjoxNjU5NDI3MDQwfQ.CN5etCHfYc3zzJqMGtObnq0HsEOFBy4BkcrXo24puLg
+Content-Type: application/json
+
+{
+    "title": "The mountains",
+    "description": "Green mountain on the top",
+    "likes" : 0,
+    "location": "Colombia"
+}
+
+###
+GET http://localhost:3000/posts/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzEzYmQyYzU3MzRlZTk5ZWNiYzIxZCIsImlhdCI6MTY1NjgzNTA0MCwiZXhwIjoxNjU5NDI3MDQwfQ.CN5etCHfYc3zzJqMGtObnq0HsEOFBy4BkcrXo24puLg
+
+
+
