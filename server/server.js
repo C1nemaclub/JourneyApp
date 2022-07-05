@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const app = express();
 const { errorHandler } = require('./middleware/errorHandler');
 const multer = require('multer');
+const User = require('./models/usersModel');
 
 const port = process.env.PORT || 6000;
 
@@ -27,11 +28,12 @@ const db = mongoose.connection;
 db.on('error', (err) => console.log(err));
 db.on('open', () => console.log('Connected to Mongoose'));
 
-/*
-app.get('/', (req, res) => {
-  res.send('Home');
+app.get('/test', async (req, res) => {
+  const newUsers = await User.find({}).sort({ createdAt: -1 }).limit(3);
+
+  res.json(newUsers);
 });
-*/
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

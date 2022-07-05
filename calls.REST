@@ -1,15 +1,15 @@
-POST http://localhost:3000/user/register
+POST http://localhost:5000/api/user/register
 Content-Type: application/json
 
 {
-    "name": "Claire Evans",
-    "email": "cevans@gmail.com",
+    "name": "Camille Mayberry",
+    "email": "camberry@gmail.com",
     "password": "ya2"
 
 }
 ###
 
-POST http://localhost:3000/user/login
+POST http://localhost:5000/api/user/login
 Content-Type: application/json
 
 {
