@@ -4,9 +4,6 @@ const Post = require('../models/postsModel');
 const User = require('../models/usersModel');
 
 const createPost = asyncHandler(async (req, res) => {
-  console.log(req.body);
-  console.log(req.file.path);
-
   if (req.user) {
   } else {
     res.status(401);
@@ -36,9 +33,7 @@ const createPost = asyncHandler(async (req, res) => {
 });
 
 const deletePost = asyncHandler(async (req, res) => {
-  //*await Post.deleteMany({});
   const post = await Post.findById({ _id: req.params.id });
-  console.log(post);
 
   if (!req.user) {
     res.status(401);
@@ -60,7 +55,8 @@ const deletePost = asyncHandler(async (req, res) => {
 });
 
 const editPost = asyncHandler(async (req, res) => {
-  const post = await Post.findById(req.params.id);
+  const post = await Post.findById(req.body.oldId);
+
   if (!req.user) {
     res.status(400);
     throw new Error('Please log in');
@@ -78,11 +74,6 @@ const editPost = asyncHandler(async (req, res) => {
     throw new Error('Post not found');
   }
 
-  //console.log(req.body);
-  console.log(req.file);
-
-  console.log(post.cover);
-
   post.title = req.body.title;
   post.description = req.body.description;
   post.likes = req.body.likes;
@@ -92,8 +83,7 @@ const editPost = asyncHandler(async (req, res) => {
 
   await post.save();
 
-  console.log(req.params.id);
-  res.status(200).json({ id: req.params.id });
+  res.status(200).json({ id: req.body.oldId });
 });
 const getMe = asyncHandler(async (req, res) => {
   if (!req.user) {
@@ -104,7 +94,9 @@ const getMe = asyncHandler(async (req, res) => {
     //console.log(req.user);
   }
 
-  const postsByUser = await Post.find({ user: req.user.id });
+  const postsByUser = await Post.find({ user: req.user.id }).sort({
+    createdAt: -1,
+  });
 
   res.status(201).json(postsByUser);
 });

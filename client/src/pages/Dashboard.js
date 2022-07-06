@@ -7,9 +7,11 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  function onLogout() {
-    console.log('Hello');
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.auth
+  );
 
+  function onLogout() {
     dispatch(logout());
     dispatch(reset());
     navigate('/login');
@@ -18,6 +20,7 @@ export default function Dashboard() {
     <div>
       Dashboard
       <button onClick={onLogout}>Logout</button>
+      {user && <h2>Welcome {user.name}</h2>}
     </div>
   );
 }
