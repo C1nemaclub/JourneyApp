@@ -23,6 +23,7 @@ const createPost = asyncHandler(async (req, res) => {
     location: location,
     cover: req.file.path,
     user: req.user._id,
+    userName: req.user.name,
   });
 
   await post.save();
@@ -101,9 +102,15 @@ const getMe = asyncHandler(async (req, res) => {
   res.status(201).json(postsByUser);
 });
 
+const getAllRecentPosts = asyncHandler(async (req, res) => {
+  const recentPosts = await Post.find({}).sort({ createdAt: -1 }).limit(10);
+  res.status(200).json(recentPosts);
+});
+
 module.exports = {
   createPost,
   deletePost,
   editPost,
   getMe,
+  getAllRecentPosts,
 };

@@ -3,6 +3,7 @@ import postService from './postService';
 
 const initialState = {
   posts: [],
+  recentPosts: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -78,6 +79,23 @@ export const getPosts = createAsyncThunk(
   }
 );
 
+export const getAllRecentPosts = createAsyncThunk(
+  'posts/recent',
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await postService.getAllRecentPosts(token);
+    } catch (e) {
+      const message =
+        (e.response && e.response.data && e.response.data.message) ||
+        e.message ||
+        e.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: 'post',
   initialState: initialState,
@@ -136,6 +154,19 @@ const postSlice = createSlice({
         state.posts = state.posts;
       })
       .addCase(editPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAllRecentPosts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllRecentPosts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.recentPosts = action.payload;
+      })
+      .addCase(getAllRecentPosts.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

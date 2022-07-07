@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { reset, register } from '../features/auth/authSlice';
+import { reset, register, logout } from '../features/auth/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Spinner from '../components/Spinner';
+import Spline from '@splinetool/react-spline';
+import Loader from '../components/Loader';
+import AuthLinks from '../components/AuthLinks';
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -54,43 +56,78 @@ export default function Register() {
         password: password,
       };
       dispatch(register(userData));
+      dispatch(reset());
     }
   }
 
   if (isLoading) {
-    return <Spinner />;
+    return <Loader />;
   }
 
   return (
     <>
-      <h1>Register</h1>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <input
-          type='text'
-          name='name'
-          value={formData.name}
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          type='email'
-          name='email'
-          value={formData.email}
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          type='password'
-          name='password'
-          value={formData.password}
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          type='password'
-          name='password2'
-          value={formData.password2}
-          onChange={(e) => onChange(e)}
-        />
-        <button type='submit'>Register</button>
-      </form>
+      <div className='container'>
+        <AuthLinks />
+        <div className='left-col'>
+          <h1 className='title'>Start discovering new adventures</h1>
+          <h1 className='reg-label'>Register</h1>
+          <form onSubmit={(e) => onSubmit(e)}>
+            <div className='form'>
+              <input
+                className='form__input'
+                type='text'
+                name='name'
+                value={formData.name}
+                onChange={(e) => onChange(e)}
+                placeholder=' '
+              />
+              <label class='form__label'>Name</label>
+            </div>
+            <div className='form'>
+              <input
+                className='form__input'
+                type='email'
+                name='email'
+                value={formData.email}
+                onChange={(e) => onChange(e)}
+                placeholder=' '
+              />
+              <label class='form__label'>Email</label>
+            </div>
+            <div className='form'>
+              <input
+                className='form__input'
+                type='password'
+                name='password'
+                value={formData.password}
+                onChange={(e) => onChange(e)}
+                placeholder=' '
+              />
+              <label class='form__label'>Password</label>
+            </div>
+            <div className='form'>
+              <input
+                className='form__input'
+                type='password'
+                name='password2'
+                value={formData.password2}
+                onChange={(e) => onChange(e)}
+                placeholder=' '
+              />
+              <label class='form__label'>Confirm Password</label>
+            </div>
+            <button type='submit' className='register-btn btn'>
+              Register
+            </button>
+          </form>
+        </div>
+        <div className='right-col'>
+          <Spline
+            className='spline'
+            scene='https://prod.spline.design/X-nHbpqn39env0sx/scene.splinecode'
+          />
+        </div>
+      </div>
     </>
   );
 }

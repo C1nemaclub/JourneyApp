@@ -70,11 +70,24 @@ const editPost = async (postData, token) => {
   return response.data;
 };
 
+const getAllRecentPosts = async (token) => {
+  const config = {
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get('api/posts/recent', config);
+
+  return response.data;
+};
+
 const postService = {
   createPost,
   getPosts,
   deletePost,
   editPost,
+  getAllRecentPosts,
 };
 
 export default postService;

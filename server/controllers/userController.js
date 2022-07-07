@@ -71,6 +71,18 @@ const getMe = asyncHandler(async (req, res) => {
   res.status(200).json(req.user);
 });
 
+const getRecentUsers = asyncHandler(async (req, res) => {
+  console.log('got em');
+
+  const recentUsers = await User.find({})
+    .select('-password')
+    .sort({ createdAt: -1 })
+    .limit(4);
+  console.log(recentUsers);
+
+  res.status(200).json(recentUsers);
+});
+
 function generateToken(id) {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '30d',
@@ -81,4 +93,5 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
+  getRecentUsers,
 };

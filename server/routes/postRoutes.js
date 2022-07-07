@@ -10,16 +10,13 @@ const {
   deletePost,
   editPost,
   getMe,
+  getAllRecentPosts,
 } = require('../controllers/postsController');
 
 router.post('/create', upload.single('file'), protectRoute, createPost);
 router.delete('/delete/:id', protectRoute, deletePost);
 router.put('/edit/:id', upload.single('file'), protectRoute, editPost);
 router.get('/me', protectRoute, getMe);
-router.get('/test', async (req, res) => {
-  const posts = await Post.find({}).sort({ createdAt: -1 });
-  console.log('test');
-  res.json(posts);
-});
+router.get('/recent', protectRoute, getAllRecentPosts);
 
 module.exports = router;

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Spinner from '../components/Spinner';
 import { getPosts, deletePost, reset } from '../features/posts/postSlice';
+import Loader from '../components/Loader';
+import Header from '../components/Header';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -22,11 +23,12 @@ export default function Profile() {
       navigate('/login');
     }
 
+    document.title = `${user.name}'s Profile`;
     dispatch(getPosts());
   }, [user, navigate, isSuccess, isError, message, dispatch]);
 
   if (isLoading) {
-    return <Spinner />;
+    return <Loader />;
   }
 
   function handlePost(post) {
@@ -52,6 +54,7 @@ export default function Profile() {
 
   return (
     <>
+      <Header />
       <h3>{user.name}</h3>
       <h3>{user.email}</h3>
       <button onClick={handlecreatePost}>Agregar</button>

@@ -1,15 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Profile from './pages/Profile';
-import EditPost from './pages/EditPost';
-import SinglePost from './pages/SinglePost';
-import CreatePost from './pages/CreatePost';
-import AuthLinks from './components/AuthLinks';
 
-function App() {
+export default function Authentication() {
   return (
     <>
       <Router>
@@ -26,5 +17,3 @@ function App() {
     </>
   );
 }
-
-export default App;

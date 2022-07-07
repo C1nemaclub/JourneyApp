@@ -27,6 +27,11 @@ const postSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    userName: {
+      type: mongoose.Schema.Types.String,
+      required: true,
+      ref: 'User',
+    },
   },
   {
     timestamps: true,

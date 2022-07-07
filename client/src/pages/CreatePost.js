@@ -57,6 +57,7 @@ export default function CreatePost() {
     data.append('location', formData.location);
     data.append('likes', 0);
     dispatch(createPost(data));
+    dispatch(reset());
     navigate('/profile');
   }
 
@@ -84,9 +85,7 @@ export default function CreatePost() {
           />
           <div {...getRootProps()} className='container'>
             <input {...getInputProps()} />
-            <p>
-              Drag & Drop your files or <a href='/'>Browse</a>{' '}
-            </p>
+            <p>Drag & Drop your files or Browse</p>
             {images}
           </div>
           <button>Create Post</button>

@@ -1,0 +1,138 @@
+body {
+  background: #0e1129;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-size: 70px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.login {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 100px;
+}
+
+.left-col {
+  width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+}
+
+.left-col form {
+  margin-top: 30px;
+  position: relative;
+}
+
+.form {
+  position: relative;
+  width: 20rem;
+  height: 3rem;
+  margin-bottom: 20px;
+}
+
+.form__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: inherit;
+  color: white;
+  outline: none;
+  padding: 1.25rem;
+  background: none;
+}
+
+.form__input:hover {
+  border-color: darkcyan;
+}
+
+.form__input:focus {
+  border-color: #4000ff;
+}
+
+.form__label {
+  position: absolute;
+  left: 1rem;
+  top: 0.8rem;
+  padding: 0 0.5rem;
+  color: white;
+  cursor: text;
+  background: #0e1129;
+  -webkit-transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+  -webkit-transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+}
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+  top: -0.5rem;
+  font-size: 0.8rem;
+  left: 0.8rem;
+}
+
+button {
+  padding: 8px 30px;
+  border: 0px;
+  font-size: 1.2rem;
+  border-radius: 2px;
+  color: white;
+  background: transparent;
+  border: 1px solid white;
+  cursor: pointer;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.login-btn,
+.register-btn {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+button:hover {
+  background: #4000ff;
+  border: 1px solid #4000ff;
+}
+
+.spline {
+  position: absolute;
+  top: -6%;
+  right: -5%;
+}
+/*# sourceMappingURL=Login.css.map */

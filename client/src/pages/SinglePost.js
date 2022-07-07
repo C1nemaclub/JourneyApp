@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deletePost, reset } from '../features/posts/postSlice';
+import Header from '../components/Header';
 
 export default function SinglePost() {
   const { state } = useLocation();
@@ -22,13 +23,16 @@ export default function SinglePost() {
   }
   return (
     <div>
+      <Header />
       SinglePost
       <h4>{post.title}</h4>
       <img src={`http://localhost:5000/${post.cover}`} alt='' />
-      <button onClick={() => handlePostDelete(post._id)} key={post._id + 1}>
-        Delete
-      </button>
-      <button onClick={() => handlePostEdit(post)}>Edit</button>
+      <div className='post-btns btns'>
+        <button onClick={() => handlePostDelete(post._id)} key={post._id + 1}>
+          Delete
+        </button>
+        <button onClick={() => handlePostEdit(post)}>Edit</button>
+      </div>
     </div>
   );
 }

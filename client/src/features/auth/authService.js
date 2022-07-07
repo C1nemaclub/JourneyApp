@@ -32,6 +32,19 @@ const login = async (userData) => {
   return response.data;
 };
 
+const getRecentUsers = async (token) => {
+  const config = {
+    headers: {
+      'content-type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  };
+
+  const response = await axios.get('api/user/recent', config);
+
+  return response.data;
+};
+
 const logout = () => {
   localStorage.removeItem('user');
 };
@@ -39,6 +52,7 @@ const authService = {
   register,
   logout,
   login,
+  getRecentUsers,
 };
 
 export default authService;
