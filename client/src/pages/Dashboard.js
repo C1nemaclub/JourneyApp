@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout, reset, getRecentUsers } from '../features/auth/authSlice';
 import { getAllRecentPosts } from '../features/posts/postSlice';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from '../components/Header';
+import Loader from '../components/Loader';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -20,15 +19,11 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!user) {
-      navigate('/login');
+      dispatch(logout());
+      navigate('/');
     }
   }, [user]);
 
-  function onLogout() {
-    dispatch(logout());
-    dispatch(reset());
-    navigate('/');
-  }
   useEffect(() => {
     dispatch(getRecentUsers());
     dispatch(getAllRecentPosts());
@@ -46,11 +41,13 @@ export default function Dashboard() {
     return <p key={user._id}>{user.email}</p>;
   });
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div>
-      <Header />
       Dashboard
-      <button onClick={onLogout}>Logout</button>
       {user && <h2>Welcome {user.name}</h2>}
       {recentUserElements}
       {recentPostsElements}

@@ -10,3 +10,9 @@
 a {
   color: white;
 }
+
+.logout-link {
+  color: white;
+  cursor: pointer;
+  text-decoration: underline;
+}

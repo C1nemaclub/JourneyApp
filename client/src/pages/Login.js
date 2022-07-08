@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { reset, login } from '../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Spline from '@splinetool/react-spline';
 import '../styles/Login.css';
 import Loader from '../components/Loader';
-import AuthLinks from '../components/AuthLinks';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -38,8 +37,6 @@ export default function Login() {
     };
     if (userData) {
       dispatch(login(userData));
-    }
-    if (user) {
       navigate('/');
     }
   }
@@ -59,10 +56,9 @@ export default function Login() {
   return (
     <>
       <div className='container'>
-        <AuthLinks />
         <div className='left-col'>
           <h1 className='title'>Start discovering new adventures</h1>
-          <h3 className='reg-label'>LOGIN</h3>
+          <h1 className='reg-label'>LOGIN</h1>
           <form onSubmit={(e) => onSubmit(e)} className='login-form'>
             <div className='form'>
               <input
@@ -90,13 +86,14 @@ export default function Login() {
               LOGIN<span></span>
             </button>
           </form>
+          <div className='register-message message'>
+            Don't have an account yet?{' '}
+            <Link to='/register' className='register-link'>
+              Register
+            </Link>
+          </div>
         </div>
-        <div className='right-col'>
-          <Spline
-            className='spline'
-            scene='https://prod.spline.design/X-nHbpqn39env0sx/scene.splinecode'
-          />
-        </div>
+        <div className='right-col'></div>
       </div>
     </>
   );

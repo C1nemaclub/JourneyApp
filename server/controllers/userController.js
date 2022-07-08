@@ -72,14 +72,10 @@ const getMe = asyncHandler(async (req, res) => {
 });
 
 const getRecentUsers = asyncHandler(async (req, res) => {
-  console.log('got em');
-
   const recentUsers = await User.find({})
     .select('-password')
     .sort({ createdAt: -1 })
     .limit(4);
-  console.log(recentUsers);
-
   res.status(200).json(recentUsers);
 });
 

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getPosts, deletePost, reset } from '../features/posts/postSlice';
 import Loader from '../components/Loader';
-import Header from '../components/Header';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -18,10 +17,10 @@ export default function Profile() {
     if (isError) {
       console.log(message);
     }
-
+    /*
     if (!user) {
       navigate('/login');
-    }
+    }*/
 
     document.title = `${user.name}'s Profile`;
     dispatch(getPosts());
@@ -54,7 +53,6 @@ export default function Profile() {
 
   return (
     <>
-      <Header />
       <h3>{user.name}</h3>
       <h3>{user.email}</h3>
       <button onClick={handlecreatePost}>Agregar</button>
