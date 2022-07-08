@@ -16,3 +16,8 @@ a {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.avatar {
+  width: 200px;
+  border-radius: 50%;
+}

@@ -45,6 +45,22 @@ const getRecentUsers = async (token) => {
   return response.data;
 };
 
+const editUser = async (userData, token) => {
+  const config = {
+    headers: {
+      'content-type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  };
+  const response = await axios.put(
+    'api/user/edit/' + userData._id,
+    userData,
+    config
+  );
+
+  return response.data;
+};
+
 const logout = () => {
   localStorage.removeItem('user');
 };
@@ -53,6 +69,7 @@ const authService = {
   logout,
   login,
   getRecentUsers,
+  editUser,
 };
 
 export default authService;

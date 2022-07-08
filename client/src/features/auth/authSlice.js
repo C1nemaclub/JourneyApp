@@ -68,6 +68,25 @@ export const getRecentUsers = createAsyncThunk(
   }
 );
 
+//* Edit User
+export const editUser = createAsyncThunk(
+  'auth/edit',
+  async (userData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+
+      return await authService.editUser(userData, token);
+    } catch (e) {
+      const message =
+        (e.response && e.response.data && e.response.data.message) ||
+        e.message ||
+        e.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,
@@ -125,6 +144,19 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.recentUsers = null;
+      })
+      .addCase(editUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user.avatar = action.payload.avatar;
+      })
+      .addCase(editUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
