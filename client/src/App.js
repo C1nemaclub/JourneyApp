@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Authentication from './pages/Authentication';
 import ProfileNav from './pages/ProfileNav';

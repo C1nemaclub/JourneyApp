@@ -69,7 +69,7 @@ export default function Login() {
                 onChange={(e) => onChange(e)}
                 placeholder=' '
               />
-              <label class='form__label'>Email</label>
+              <label className='form__label'>Email</label>
             </div>
             <div className='form'>
               <input
@@ -80,7 +80,7 @@ export default function Login() {
                 onChange={(e) => onChange(e)}
                 placeholder=' '
               />
-              <label class='form__label'>Password</label>
+              <label className='form__label'>Password</label>
             </div>
             <button className='btn login-btn'>
               LOGIN<span></span>

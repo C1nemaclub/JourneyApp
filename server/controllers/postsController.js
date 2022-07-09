@@ -103,7 +103,7 @@ const getMe = asyncHandler(async (req, res) => {
 });
 
 const getAllRecentPosts = asyncHandler(async (req, res) => {
-  const recentPosts = await Post.find({}).sort({ createdAt: -1 }).limit(10);
+  const recentPosts = await Post.find({}).sort({ createdAt: -1 }).limit(20);
   res.status(200).json(recentPosts);
 });
 

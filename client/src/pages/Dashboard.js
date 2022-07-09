@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { logout, reset, getRecentUsers } from '../features/auth/authSlice';
 import { getAllRecentPosts } from '../features/posts/postSlice';
 import Loader from '../components/Loader';
+import OtherUserCard from '../components/OtherUserCard';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function Dashboard() {
   }, [user]);
 
   useEffect(() => {
+    document.title = `${user.name}'s Dashboard`;
     dispatch(getRecentUsers());
     dispatch(getAllRecentPosts());
   }, []);
@@ -37,20 +39,23 @@ export default function Dashboard() {
     );
   });
 
-  const recentUserElements = recentUsers.map((user) => {
-    return <p key={user._id}>{user.email}</p>;
-  });
-
   if (isLoading) {
     return <Loader />;
   }
 
   return (
-    <div>
-      Dashboard
-      {user && <h2>Welcome {user.name}</h2>}
-      {recentUserElements}
-      {recentPostsElements}
-    </div>
+    <section className='dash-section'>
+      <div className='main'>
+        <div className='mid-col'>
+          {user && <h2 className='dash-user'>{user.name}'s Dashboard</h2>}
+          <h1 className='dash-title'>RECENT POSTS</h1>
+          <div className='post-grid'>{recentPostsElements}</div>
+        </div>
+        <div className='right-col'>
+          <h2>NEW TRAVELERS</h2>
+          <OtherUserCard />
+        </div>
+      </div>
+    </section>
   );
 }

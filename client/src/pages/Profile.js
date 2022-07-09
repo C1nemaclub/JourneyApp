@@ -104,16 +104,17 @@ export default function Profile() {
   }
 
   return (
-    <>
-      {currentAvatar}
-      {seeAvatars && allAvatars}
-      <h3>{user.name}</h3>
-      <h3>{user.email}</h3>
-      <button onClick={avAvatars}>Change Avatar</button>
-      <button onClick={changeAvatar}>Edit Avatar</button>
-      <button onClick={handlecreatePost}>Agregar</button>
-      <h3>{posts.length}</h3>
-      {postElements}
-    </>
+    <div className='profile-main'>
+      <div className='content'>
+        {seeAvatars && allAvatars}
+        <h3>{user.name}</h3>
+        <h3>{user.email}</h3>
+        <button onClick={avAvatars}>Change Avatar</button>
+        <button onClick={changeAvatar}>Edit Avatar</button>
+        <button onClick={handlecreatePost}>Agregar</button>
+        <h3>{posts.length}</h3>
+        {postElements}
+      </div>
+    </div>
   );
 }

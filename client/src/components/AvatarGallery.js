@@ -8,6 +8,9 @@ export default function AvatarGallery(props) {
   if (props.id === props.current) {
     return;
   }
+  if (props.id === 0) {
+    return;
+  }
 
   return (
     <img

@@ -1,7 +1,18 @@
+import defaultUser from './assets/defaultUser.png';
+import avatar3 from './assets/avatar3.png';
+import avatar4 from './assets/avatar4.png';
+import avatar5 from './assets/avatar5.png';
+import avatar6 from './assets/avatar6.png';
+
 export default [
   {
+    id: 0,
+    src: defaultUser,
+    selected: false,
+  },
+  {
     id: 1,
-    src: 'https://cdn.icon-icons.com/icons2/2859/PNG/512/avatar_face_man_boy_profile_smiley_happy_people_icon_181659.png',
+    src: avatar3,
     selected: false,
   },
   {
@@ -16,17 +27,17 @@ export default [
   },
   {
     id: 4,
-    src: 'https://cdn-icons.flaticon.com/png/512/4113/premium/4113022.png?token=exp=1657255529~hmac=249dda7c3c6c2942cfcf55c0ab08cefb',
+    src: avatar4,
     selected: false,
   },
   {
     id: 5,
-    src: 'https://cdn.icon-icons.com/icons2/2630/PNG/512/avatar_woman_people_girl_glasses_icon_159125.png',
+    src: avatar5,
     selected: false,
   },
   {
     id: 6,
-    src: 'https://cdn.icon-icons.com/icons2/2292/PNG/512/doctor_white_female_people_avatar_icon_141419.png',
+    src: avatar6,
     selected: false,
   },
 ];

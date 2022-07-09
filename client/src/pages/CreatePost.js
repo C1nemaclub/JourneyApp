@@ -63,7 +63,7 @@ export default function CreatePost() {
 
   return (
     <>
-      <div>
+      <div className='profile-main'>
         <form onSubmit={(e) => onSubmit(e)}>
           <input
             type='text'

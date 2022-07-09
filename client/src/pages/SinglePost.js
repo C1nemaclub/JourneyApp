@@ -21,8 +21,7 @@ export default function SinglePost() {
     navigate('/edit', { state: { post: post } });
   }
   return (
-    <div>
-      <Header />
+    <div className='profile-main'>
       SinglePost
       <h4>{post.title}</h4>
       <img src={`http://localhost:5000/${post.cover}`} alt='' />

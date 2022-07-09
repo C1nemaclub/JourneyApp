@@ -7,7 +7,7 @@ export default function EditPost() {
   const { post } = state;
 
   return (
-    <div>
+    <div className='profile-main'>
       <PostForm post={post} />
     </div>
   );

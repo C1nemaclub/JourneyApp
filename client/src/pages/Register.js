@@ -81,7 +81,7 @@ export default function Register() {
                 onChange={(e) => onChange(e)}
                 placeholder=' '
               />
-              <label class='form__label'>Name</label>
+              <label className='form__label'>Name</label>
             </div>
             <div className='form'>
               <input
@@ -103,7 +103,7 @@ export default function Register() {
                 onChange={(e) => onChange(e)}
                 placeholder=' '
               />
-              <label class='form__label'>Password</label>
+              <label className='form__label'>Password</label>
             </div>
             <div className='form'>
               <input

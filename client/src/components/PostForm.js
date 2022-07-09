@@ -32,7 +32,6 @@ export default function PostForm(props) {
           })
         )
       );
-      console.log(acceptedFiles);
     },
   });
 

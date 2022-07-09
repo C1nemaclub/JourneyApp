@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { logout, reset } from '../features/auth/authSlice';
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import UserAvatar from './UserAvatar';
 
 export default function Header() {
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,10 +19,12 @@ export default function Header() {
   return (
     <>
       <nav>
-        <div className='logo'>
-          <Link to='/'>Dashboard</Link>
-        </div>
         <ul>
+          <UserAvatar />
+          <h3 className='name'>{user.name}</h3>
+          <li>
+            <Link to='/'>Dashboard</Link>
+          </li>
           <li>
             <Link to='/profile'>Profile</Link>
           </li>
