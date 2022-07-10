@@ -1,13 +1,14 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deletePost, reset } from '../features/posts/postSlice';
-import Header from '../components/Header';
+import { deletePost } from '../features/posts/postSlice';
+import '../styles/ViewPost.css';
 
 export default function SinglePost() {
   const { state } = useLocation();
   const { post } = state;
+  console.log(post);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,15 +22,59 @@ export default function SinglePost() {
     navigate('/edit', { state: { post: post } });
   }
   return (
-    <div className='profile-main'>
-      SinglePost
-      <h4>{post.title}</h4>
-      <img src={`http://localhost:5000/${post.cover}`} alt='' />
-      <div className='post-btns btns'>
-        <button onClick={() => handlePostDelete(post._id)} key={post._id + 1}>
-          Delete
-        </button>
-        <button onClick={() => handlePostEdit(post)}>Edit</button>
+    <div className='view-post-main'>
+      <div className='view-card'>
+        <div className='flex-container'>
+          <div className='left-col-view'>
+            <h4 className='title-header'>{post.title}</h4>
+            <img
+              src={`http://localhost:5000/${post.cover}`}
+              className='post-img'
+              alt=''
+            />
+
+            <div className='buttons'>
+              <div className='top'>
+                <button
+                  onClick={() => handlePostEdit(post)}
+                  className='primary btn'
+                >
+                  Edit
+                </button>
+              </div>
+              <div className='bottom'>
+                <button onClick={() => navigate(-1)} className='danger btn'>
+                  Cancel
+                </button>
+                <button
+                  onClick={() => handlePostDelete(post._id)}
+                  key={post._id + 1}
+                  className='btn danger delete-btn'
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className='right-col-view'>
+            <div className='user flex'>
+              <h2>Posted by: </h2>
+              <h3>{post.userName}</h3>
+            </div>
+            <div className='location flex'>
+              <h2>Location: </h2>
+              <h3>{post.location}</h3>
+            </div>
+            <div className='date flex'>
+              <h2>Publish Date: </h2>
+              <h3>{post.createdAt}</h3>
+            </div>
+            <div className='description flex'>
+              <h2>Description: </h2>
+              <h3>{post.description}</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

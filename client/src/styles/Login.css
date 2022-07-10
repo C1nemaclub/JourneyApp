@@ -116,6 +116,7 @@ button {
   cursor: pointer;
   -webkit-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
+  border-radius: 0.2rem;
 }
 
 .login-btn,

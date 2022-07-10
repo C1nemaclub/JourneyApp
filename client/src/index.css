@@ -12,6 +12,7 @@ a {
 }
 
 .avatar {
-  width: 200px;
+  width: 150px;
   border-radius: 50%;
+  cursor: pointer;
 }

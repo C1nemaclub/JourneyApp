@@ -5,6 +5,7 @@ import { logout, reset, getRecentUsers } from '../features/auth/authSlice';
 import { getAllRecentPosts } from '../features/posts/postSlice';
 import Loader from '../components/Loader';
 import OtherUserCard from '../components/OtherUserCard';
+import PostCard from '../components/PostCard';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -34,7 +35,15 @@ export default function Dashboard() {
   const recentPostsElements = recentPosts.map((post) => {
     return (
       <>
-        <img src={`http://localhost:5000/${post.cover}`} />
+        <PostCard
+          key={post._id}
+          title={post.title}
+          image={post.cover}
+          user={post.userName}
+          location={post.location}
+          description={post.description}
+        />
+        {/* <img src={`http://localhost:5000/${post.cover}`} /> */}
       </>
     );
   });

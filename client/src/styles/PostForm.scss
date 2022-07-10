@@ -1,0 +1,130 @@
+.post-main {
+  width: 85%;
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  height: 100vh;
+}
+.post-title {
+  color: white;
+  font-weight: normal;
+  font-size: 2.4rem;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.post-form {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 30px;
+  .left-col-post {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .right-col-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .input-group {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    font-size: 1.3rem;
+    input {
+      height: 10px;
+      width: 100%;
+      border: 2px solid #ccc;
+      font-family: inherit;
+      font-size: inherit;
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      background: none;
+      color: white;
+    }
+
+    textarea {
+      resize: none;
+      border: 2px solid #ccc;
+      font-family: inherit;
+      font-size: inherit;
+      border-radius: 0.5rem;
+      padding: 0.8rem;
+      background: none;
+      color: white;
+      height: 220px;
+    }
+    label {
+      order: -1;
+      font-size: 1.4rem;
+    }
+  }
+  .image-container {
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 220px;
+    width: 100%;
+    border: 2px solid white;
+    position: relative;
+    border-style: dotted;
+    img {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+    }
+    span {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    p {
+      text-align: center;
+    }
+    .img-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      p:last-child {
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+      .icon {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  .buttons {
+    gap: 20px;
+    display: flex;
+    align-self: flex-end;
+  }
+}
+
+.danger {
+  background: rgb(252, 95, 95);
+  border: 1px solid rgb(252, 95, 95);
+}
+.primary {
+  background: rgb(77, 88, 236);
+  border: 1px solid rgb(77, 88, 236);
+}
