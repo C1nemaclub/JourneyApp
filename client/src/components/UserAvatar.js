@@ -8,13 +8,15 @@ export default function UserAvatar(props) {
   const currentAvatar = userAvatars.map((item) => {
     if (user.avatar === item.id) {
       return (
-        <img
-          className='avatar'
-          src={item.src}
-          alt=''
-          key={item.id}
-          onClick={props.handleClick}
-        />
+        <div className='avatar-container'>
+          <img
+            className='main-avatar'
+            src={item.src}
+            alt=''
+            key={item.id}
+            onClick={props.handleClick}
+          />
+        </div>
       );
     }
   });

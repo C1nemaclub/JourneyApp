@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { logout, reset } from '../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import UserAvatar from './UserAvatar';
-import { FaNewspaper, FaSignOutAlt, FaUser, FaUserCog } from 'react-icons/fa';
+import { FaNewspaper, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { FiMenu, FiX } from 'react-icons/fi';
 import AvatarSelectionModal from './AvatarSelectionModal.js';
+import RouteSelector from '../components/RouteSelector';
 
 export default function Header() {
   const { user } = useSelector((state) => state.auth);
@@ -14,6 +15,18 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  function CustomLink({ to, children, ...props }) {
+    const resolvePath = useResolvedPath(to);
+    const isActive = useMatch({ path: resolvePath.pathname, end: true });
+    return (
+      <li className={isActive ? 'active' : ''}>
+        <Link to={to} {...props}>
+          {children}
+        </Link>
+      </li>
+    );
+  }
 
   function onLogout() {
     dispatch(logout());
@@ -41,18 +54,24 @@ export default function Header() {
           <UserAvatar handleClick={() => setIsOpen(true)} />
           <h3 className='name'>{user.name}</h3>
           <li>
-            <Link to='/'>
-              <FaNewspaper className='icon' /> Dashboard
-            </Link>
+            <CustomLink to='/' className='link'>
+              <FaNewspaper className='icon' />
+              <div className='text'>Dashboard</div>
+            </CustomLink>
           </li>
           <li>
-            <Link to='/profile'>
-              <FaUser /> Profile
-            </Link>
+            <CustomLink to='/profile' className='link'>
+              <FaUser className='icon' />
+              <div className='text'>Profile</div>
+            </CustomLink>
           </li>
-          <li className='logout-link' onClick={onLogout}>
-            <FaSignOutAlt /> Logout
+          <li className='logout-link ' onClick={onLogout}>
+            <div className='link'>
+              <FaSignOutAlt className='icon' />
+              <div className='text'>Logout</div>
+            </div>
           </li>
+          <RouteSelector />
         </ul>
       </nav>
     </>

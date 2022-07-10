@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -44,6 +45,8 @@ export default function Login() {
   useEffect(() => {
     if (isSuccess || user) {
       navigate('/');
+    }
+    if (isError) {
     }
 
     dispatch(reset());

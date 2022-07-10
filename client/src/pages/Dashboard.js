@@ -6,12 +6,15 @@ import { getAllRecentPosts } from '../features/posts/postSlice';
 import Loader from '../components/Loader';
 import OtherUserCard from '../components/OtherUserCard';
 import PostCard from '../components/PostCard';
+import { toast } from 'react-toastify';
+import FullPostView from '../components/FullPostView';
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { recentUsers } = useSelector((state) => state.auth);
 
@@ -42,11 +45,24 @@ export default function Dashboard() {
           user={post.userName}
           location={post.location}
           description={post.description}
+          handleClick={() => openModal()}
+          handleModal={handleModal}
         />
         {/* <img src={`http://localhost:5000/${post.cover}`} /> */}
       </>
     );
   });
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const [info, setInfo] = useState(null);
+  function handleModal(post) {
+    setInfo(post);
+  }
 
   if (isLoading) {
     return <Loader />;
@@ -54,6 +70,7 @@ export default function Dashboard() {
 
   return (
     <section className='dash-section'>
+      <FullPostView open={isOpen} handleClose={closeModal} info={info} />
       <div className='main'>
         <div className='mid-col'>
           {user && <h2 className='dash-user'>{user.name}'s Dashboard</h2>}

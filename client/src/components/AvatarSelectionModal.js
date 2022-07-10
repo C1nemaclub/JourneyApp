@@ -50,9 +50,10 @@ export default function AvatarSelectionModal(props) {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: 'darkblue',
+    backgroundColor: '#ccc',
     padding: '50px',
     zIndex: '1000',
+    borderRadius: '5px',
   };
 
   const overlay_style = {
@@ -75,6 +76,7 @@ export default function AvatarSelectionModal(props) {
       <div style={modal_style}>
         {availableAvatars}
         <button
+          className='btn primary'
           onClick={() => {
             changeAvatar();
             props.handleClick();
@@ -82,7 +84,9 @@ export default function AvatarSelectionModal(props) {
         >
           Edit Avatar
         </button>
-        <button onClick={props.handleClick}>Close</button>
+        <button className='btn danger' onClick={props.handleClick}>
+          Close
+        </button>
       </div>
     </>,
     document.getElementById('portal')

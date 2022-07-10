@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Register() {
   const [formData, setFormData] = useState({
