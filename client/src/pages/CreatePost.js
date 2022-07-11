@@ -29,7 +29,7 @@ export default function CreatePost() {
           })
         )
       );
-      console.log(acceptedFiles);
+      //console.log(acceptedFiles);
     },
   });
 

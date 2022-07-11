@@ -1,0 +1,15 @@
+:root {
+  --color-base-hue: 200;
+  --color-danger-hue-offset: 180;
+  --color-danger-hue: calc(
+    var(--color-base-hue) - var(--color-danger-hue-offset)
+  );
+  --color-background-dark: #dcdcdc;
+  --color-background-light: rgba(234, 231, 243);
+  --color-text-light: black;
+  --color-sidebar-light: #5a84f0;
+  --color-sidebar-text-light: #ffffff;
+  --color-selector-light: #4000ff;
+  --color-title-light: #4000ff;
+  --color-subtitle-light: #1356ff;
+}

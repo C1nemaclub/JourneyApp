@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { editPost, reset } from '../features/posts/postSlice';
+import { editPost } from '../features/posts/postSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 import { FaFileImage } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 export default function PostForm(props) {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ export default function PostForm(props) {
     data.append('oldId', formData._id);
     dispatch(editPost(data));
     navigate('/profile');
+    toast.success('Post edited successfully');
   }
   const images = file.map((file, index) => (
     <img key={index} src={file.preview} alt='image' className='prev' />

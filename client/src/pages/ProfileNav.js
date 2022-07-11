@@ -8,6 +8,7 @@ import SinglePost from './SinglePost';
 import CreatePost from './CreatePost';
 import '../styles/Dashboard.css';
 import '../styles/Profile.css';
+import '../styles/Modals.css';
 
 export default function ProfileNav() {
   return (

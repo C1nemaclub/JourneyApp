@@ -1,20 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { FaWindowClose } from 'react-icons/fa';
 
 export default function FullPostView(props) {
-  console.log(props);
-
-  const modal_style = {
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: '#ccc',
-    padding: '50px',
-    zIndex: '1000',
-    borderRadius: '5px',
-  };
-
   const overlay_style = {
     position: 'fixed',
     top: 0,
@@ -33,14 +21,14 @@ export default function FullPostView(props) {
     <>
       (
       <div style={overlay_style}>
-        <div style={modal_style} onClick={(e) => props.handleClick(e)}>
-          {props.info.title}
-          {props.info.location}
-          {props.info.description}
-          <img src={`http://localhost:5000/${props.info.image}`} alt='' />
-          <button className='btn primary' onClick={props.handleClose}>
-            Close
-          </button>
+        <div onClick={() => props.handleClick()} className='image-modal'>
+          <div className='modal-title'>
+            <h2>{props.info.title}</h2>
+            <FaWindowClose onClick={props.handleClose} className='icon-close' />
+          </div>
+          <div className='modal-content'>
+            <img src={`http://localhost:5000/${props.info.cover}`} alt='' />
+          </div>
         </div>
       </div>
       )

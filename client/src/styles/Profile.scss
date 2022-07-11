@@ -5,17 +5,20 @@
   display: -ms-flexbox;
   display: flex;
   padding: 3rem;
-  background: white;
+  background: var(--color-background-light);
   position: relative;
+
   .profile-content {
     position: relative;
 
     .top {
-      //width: 85%; //* Alinear POSTS parte top
-      //margin: auto; //* Alinear POSTS  parte top
+      width: 85%; //* Alinear POSTS parte top
+      margin: auto; //* Alinear POSTS  parte top
     }
     .profile-title {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      color: var(--color-subtitle-light);
     }
     .info {
       display: flex;
@@ -26,7 +29,7 @@
       flex-direction: column;
 
       h2 {
-        color: rgb(173, 174, 255);
+        color: var(--color-subtitle-light);
         font-size: 1.5rem;
       }
       h3 {

@@ -6,9 +6,10 @@
   display: flex;
   position: relative;
   height: 100vh;
+  background: var(--color-background-light);
 }
 .post-title {
-  color: white;
+  color: var(--color-title-light);
   font-weight: normal;
   font-size: 2.4rem;
   position: absolute;
@@ -39,7 +40,7 @@
     gap: 10px;
   }
   .input-group {
-    color: white;
+    color: var(--color-text-light);
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -48,24 +49,24 @@
     input {
       height: 10px;
       width: 100%;
-      border: 2px solid #ccc;
+      border: 2px solid var(--color-text-light);
       font-family: inherit;
       font-size: inherit;
       border-radius: 0.5rem;
       padding: 1.25rem;
       background: none;
-      color: white;
+      color: var(--color-text-light);
     }
 
     textarea {
       resize: none;
-      border: 2px solid #ccc;
+      border: 2px solid var(--color-text-light);
       font-family: inherit;
       font-size: inherit;
       border-radius: 0.5rem;
       padding: 0.8rem;
       background: none;
-      color: white;
+      color: var(--color-text-light);
       height: 220px;
     }
     label {
@@ -80,7 +81,7 @@
     align-items: center;
     height: 220px;
     width: 100%;
-    border: 2px solid white;
+    border: 2px solid var(--color-text-light);
     position: relative;
     border-style: dotted;
     img {
@@ -97,6 +98,7 @@
     }
     p {
       text-align: center;
+      color: var(--color-text-light);
     }
     .img-info {
       display: flex;
@@ -105,7 +107,7 @@
       align-items: center;
       gap: 15px;
       p:last-child {
-        color: #ccc;
+        color: var(--color-text-light);
         font-size: 0.9rem;
       }
       .icon {

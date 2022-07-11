@@ -27,6 +27,11 @@
   cursor: pointer;
 }
 
+ul,
+.right-col {
+  background: #5a84f0;
+}
+
 nav {
   width: 15%;
   height: 100%;
@@ -38,7 +43,6 @@ nav {
 
 nav ul {
   position: absolute;
-  background: #a486ff;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -81,11 +85,10 @@ nav ul .avatar-container {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-          clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   background: #4000ff;
   width: 8rem;
   height: 8rem;
+  border-radius: 50%;
 }
 
 nav ul li {
@@ -144,6 +147,12 @@ nav ul a {
   padding: 3rem 0rem;
 }
 
+.main .mid-col .top {
+  width: 85%;
+  margin: left;
+  margin-bottom: 30px;
+}
+
 .main .mid-col .dash-user {
   color: black;
   font-size: 2rem;
@@ -161,7 +170,6 @@ nav ul a {
   width: 15%;
   height: 100%;
   position: fixed;
-  background: #a486ff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,7 +194,7 @@ nav ul a {
   display: -ms-flexbox;
   display: flex;
   width: 80%;
-  background: #4405ff;
+  background: white;
   margin-bottom: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -211,7 +219,7 @@ nav ul a {
 }
 
 .main .right-col .user-card .user-name {
-  color: white;
+  color: black;
   font-size: 1.1rem;
   font-weight: bold;
 }
@@ -228,12 +236,18 @@ p {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 20px;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.dash-grid {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .card {
@@ -286,11 +300,21 @@ p {
 
 .card .location .icon {
   margin-right: 5px;
+  color: orangered;
+}
+
+.card .location a {
+  color: var(--color-text-light);
+  text-decoration: none;
+}
+
+.card .location a:hover {
+  color: var(--color-subtitle-light);
 }
 
 .card .user {
   margin-top: 14px;
-  color: black;
+  color: #1356ff;
   font-weight: bold;
   letter-spacing: 1px;
 }

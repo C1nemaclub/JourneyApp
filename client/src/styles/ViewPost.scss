@@ -2,12 +2,14 @@
   width: 85%;
   margin-left: auto;
   padding: 3rem;
+  background: var(--color-background-light);
+  height: 100vh;
 }
 
 .view-card {
   .flex-container {
     display: flex;
-    color: white;
+    color: var(--color-text-light);
     gap: 30px;
     .left-col-view {
       display: flex;
@@ -15,7 +17,7 @@
       .title-header {
         margin-bottom: 20px;
         font-size: 2.4rem;
-        color: rgb(191, 192, 253);
+        color: var(--color-subtitle-light);
       }
       button {
         width: 100%;
@@ -45,13 +47,15 @@
         height: 350px;
         object-fit: cover;
         border-radius: 10px;
+        cursor: pointer;
+        //filter: drop-shadow(4px 8px 4px rgba(0, 0, 0, 0.25));
       }
     }
     .right-col-view {
       margin-top: 80px;
       .flex {
         h2 {
-          color: rgb(173, 174, 255);
+          color: var(--color-subtitle-light);
           font-size: 1.6rem;
         }
         h3 {

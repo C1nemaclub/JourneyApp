@@ -4,6 +4,7 @@ import avatars from '../avatars';
 import AvatarGallery from './AvatarGallery';
 import { useSelector, useDispatch } from 'react-redux';
 import { editUser } from '../features/auth/authSlice';
+import { FaWindowClose } from 'react-icons/fa';
 
 export default function AvatarSelectionModal(props) {
   const { user } = useSelector((state) => state.auth);
@@ -45,17 +46,6 @@ export default function AvatarSelectionModal(props) {
     );
   });
 
-  const modal_style = {
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: '#ccc',
-    padding: '50px',
-    zIndex: '1000',
-    borderRadius: '5px',
-  };
-
   const overlay_style = {
     position: 'fixed',
     top: 0,
@@ -73,20 +63,25 @@ export default function AvatarSelectionModal(props) {
   return ReactDom.createPortal(
     <>
       <dov style={overlay_style}></dov>
-      <div style={modal_style}>
-        {availableAvatars}
-        <button
-          className='btn primary'
-          onClick={() => {
-            changeAvatar();
-            props.handleClick();
-          }}
-        >
-          Edit Avatar
-        </button>
-        <button className='btn danger' onClick={props.handleClick}>
-          Close
-        </button>
+      <div className='avatar-modal'>
+        <div className='modal-title'>
+          <h2> Avatar Selection</h2>
+          <FaWindowClose onClick={props.handleClick} className='icon-close' />
+        </div>
+        <div className='modal-content'>
+          <div className='avatars'>{availableAvatars}</div>
+          <div className='modal-btn'>
+            <button
+              className='btn primary'
+              onClick={() => {
+                changeAvatar();
+                props.handleClick();
+              }}
+            >
+              Update
+            </button>
+          </div>
+        </div>
       </div>
     </>,
     document.getElementById('portal')

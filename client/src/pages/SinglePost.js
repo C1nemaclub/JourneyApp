@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deletePost } from '../features/posts/postSlice';
+import { toast } from 'react-toastify';
+import FullPostView from '../components/FullPostView';
+
 import '../styles/ViewPost.css';
 
 export default function SinglePost() {
   const { state } = useLocation();
   const { post } = state;
-  console.log(post);
+  const [info, setInfo] = useState(post);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,13 +19,30 @@ export default function SinglePost() {
   function handlePostDelete(postId) {
     dispatch(deletePost(postId));
     navigate('/profile');
+    toast.success('Post deleted successfully');
   }
 
   function handlePostEdit(post) {
     navigate('/edit', { state: { post: post } });
   }
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function handleModal() {
+    console.log(info);
+    setInfo(post);
+  }
+
   return (
     <div className='view-post-main'>
+      <FullPostView open={isOpen} handleClose={closeModal} info={post} />
       <div className='view-card'>
         <div className='flex-container'>
           <div className='left-col-view'>
@@ -31,6 +51,10 @@ export default function SinglePost() {
               src={`http://localhost:5000/${post.cover}`}
               className='post-img'
               alt=''
+              onClick={(post) => {
+                openModal();
+                handleModal(post);
+              }}
             />
 
             <div className='buttons'>

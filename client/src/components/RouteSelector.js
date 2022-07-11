@@ -3,7 +3,6 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 export default function RouteSelector() {
   const location = useLocation();
-  console.log(location.pathname);
 
   const selStyle = {
     top:

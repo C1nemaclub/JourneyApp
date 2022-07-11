@@ -47,6 +47,8 @@ export default function Login() {
       navigate('/');
     }
     if (isError) {
+      //toast.error(message);
+      toast.error('Invalid Credentials');
     }
 
     dispatch(reset());

@@ -134,7 +134,13 @@ button:hover {
 
 .spline {
   position: absolute;
-  top: -6%;
+  top: -2%;
   right: -5%;
+}
+
+@media screen and (max-width: 720px) {
+  .spline {
+    opacity: 0;
+  }
 }
 /*# sourceMappingURL=Login.css.map */

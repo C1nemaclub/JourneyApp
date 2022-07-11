@@ -20,7 +20,8 @@ export default function Profile() {
   );
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      toast.error(message);
+      //console.log(message);
     }
     /*
     if (!user) {
@@ -60,7 +61,7 @@ export default function Profile() {
     return (
       <PostCard
         key={post._id}
-        image={post.cover}
+        cover={post.cover}
         title={post.title}
         location={post.location}
         description={post.description}
@@ -74,7 +75,7 @@ export default function Profile() {
     <div className='profile-main'>
       <div className='profile-content'>
         <div className='top'>
-          <h2 className='profile-title'>User Information</h2>
+          <h2 className='profile-title'>{user.name}'s Profile</h2>
           <div className='info'>
             <div className='name flex'>
               <h2>Name: </h2>

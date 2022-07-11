@@ -48,6 +48,7 @@ export default function Register() {
     e.preventDefault();
 
     if (password !== password2) {
+      toast.error('Passwords dont match');
       console.log('Passwords dont match');
     } else {
       const userData = {

@@ -2,13 +2,15 @@
   width: 85%;
   margin-left: auto;
   padding: 3rem;
+  background: var(--color-background-light);
+  height: 100vh;
 }
 
 .view-card .flex-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: white;
+  color: var(--color-text-light);
   gap: 30px;
 }
 
@@ -25,7 +27,7 @@
 .view-card .flex-container .left-col-view .title-header {
   margin-bottom: 20px;
   font-size: 2.4rem;
-  color: #bfc0fd;
+  color: var(--color-subtitle-light);
 }
 
 .view-card .flex-container .left-col-view button {
@@ -75,6 +77,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .view-card .flex-container .right-col-view {
@@ -92,7 +95,7 @@
 }
 
 .view-card .flex-container .right-col-view .flex h2 {
-  color: #adaeff;
+  color: var(--color-subtitle-light);
   font-size: 1.6rem;
 }
 

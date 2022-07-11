@@ -27,6 +27,9 @@ export default function Dashboard() {
       dispatch(logout());
       navigate('/');
     }
+    if (isError) {
+      toast.error(message);
+    }
   }, [user]);
 
   useEffect(() => {
@@ -41,11 +44,12 @@ export default function Dashboard() {
         <PostCard
           key={post._id}
           title={post.title}
-          image={post.cover}
+          cover={post.cover}
           user={post.userName}
           location={post.location}
           description={post.description}
-          handleClick={() => openModal()}
+          //handleClick={() => openModal()}
+          handleClick={openModal}
           handleModal={handleModal}
         />
         {/* <img src={`http://localhost:5000/${post.cover}`} /> */}
@@ -73,9 +77,11 @@ export default function Dashboard() {
       <FullPostView open={isOpen} handleClose={closeModal} info={info} />
       <div className='main'>
         <div className='mid-col'>
-          {user && <h2 className='dash-user'>{user.name}'s Dashboard</h2>}
-          <h1 className='dash-title'>RECENT POSTS</h1>
-          <div className='post-grid'>{recentPostsElements}</div>
+          <div className='top'>
+            {user && <h2 className='dash-user'>{user.name}'s Dashboard</h2>}
+            <h1 className='dash-title'>RECENT POSTS</h1>
+          </div>
+          <div className='post-grid dash-grid'>{recentPostsElements}</div>
         </div>
         <div className='right-col'>
           <h2>NEW TRAVELERS</h2>
