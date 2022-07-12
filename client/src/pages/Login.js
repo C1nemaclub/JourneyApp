@@ -67,6 +67,7 @@ export default function Login() {
           <form onSubmit={(e) => onSubmit(e)} className='login-form'>
             <div className='form'>
               <input
+                required
                 className='form__input'
                 type='email'
                 name='email'
@@ -78,6 +79,7 @@ export default function Login() {
             </div>
             <div className='form'>
               <input
+                required
                 className='form__input'
                 type='password'
                 name='password'
@@ -87,6 +89,7 @@ export default function Login() {
               />
               <label className='form__label'>Password</label>
             </div>
+
             <button className='btn login-btn'>
               LOGIN<span></span>
             </button>

@@ -80,6 +80,7 @@ export default function PostForm(props) {
                 name='title'
                 value={formData.title}
                 onChange={(e) => onChange(e)}
+                className='text'
               />
               <label>Title</label>
             </div>
@@ -105,6 +106,7 @@ export default function PostForm(props) {
                 name='location'
                 value={formData.location}
                 onChange={(e) => onChange(e)}
+                className='text'
               />
               <label>Location</label>
             </div>
@@ -116,6 +118,7 @@ export default function PostForm(props) {
                 name='description'
                 value={formData.description}
                 onChange={(e) => onChange(e)}
+                className='text'
               />
               <label>Description</label>
             </div>

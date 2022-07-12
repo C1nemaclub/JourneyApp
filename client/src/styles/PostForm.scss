@@ -130,3 +130,12 @@
   background: rgb(77, 88, 236);
   border: 1px solid rgb(77, 88, 236);
 }
+
+@media screen and (max-width: 720px) {
+  .post-main {
+    width: 100%;
+
+    .post-form {
+    }
+  }
+}

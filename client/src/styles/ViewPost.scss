@@ -1,12 +1,15 @@
 .view-post-main {
-  width: 85%;
   margin-left: auto;
   padding: 3rem;
   background: var(--color-background-light);
+  position: relative;
+  width: 85%;
   height: 100vh;
 }
 
 .view-card {
+  position: relative;
+  width: 100%;
   .flex-container {
     display: flex;
     color: var(--color-text-light);
@@ -68,5 +71,11 @@
         max-width: 500px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .view-post-main {
+    width: 100%;
   }
 }

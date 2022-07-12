@@ -1,9 +1,15 @@
 .view-post-main {
-  width: 85%;
   margin-left: auto;
   padding: 3rem;
   background: var(--color-background-light);
+  position: relative;
+  width: 85%;
   height: 100vh;
+}
+
+.view-card {
+  position: relative;
+  width: 100%;
 }
 
 .view-card .flex-container {
@@ -105,5 +111,11 @@
 
 .view-card .flex-container .right-col-view .description {
   max-width: 500px;
+}
+
+@media screen and (max-width: 720px) {
+  .view-post-main {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=ViewPost.css.map */

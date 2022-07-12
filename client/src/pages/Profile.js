@@ -72,29 +72,24 @@ export default function Profile() {
   });
 
   return (
-    <div className='profile-main'>
+    <section className='profile-section'>
       <div className='profile-content'>
         <div className='top'>
-          <h2 className='profile-title'>{user.name}'s Profile</h2>
+          <h2 class='profile-name main-title'>{user.name}'s Profile</h2>
           <div className='info'>
-            <div className='name flex'>
-              <h2>Name: </h2>
-              <h3>{user.name}</h3>
+            <div className='name line subtitle'>
+              Name: <span className='text'>{user.name}</span>
             </div>
-            <div className='email flex'>
-              <h2>Email: </h2>
-              <h3>{user.email}</h3>
+            <div className='email line subtitle'>
+              Email: <span className='text'>{user.email}</span>
             </div>
+            <p onClick={() => setIsOpen(true)} className='text'>
+              Change Avatar
+            </p>
           </div>
-          <p onClick={() => setIsOpen(true)}>Change Avatar</p>
-          <AvatarSelectionModal
-            open={isOpen}
-            handleClick={() => setIsOpen(false)}
-          />
-          {/* <button className='btn avatar-btn primary'>Change Avatar</button> */}
-          <h1>
-            YOUR POSTS <small>({posts.length})</small>{' '}
-          </h1>
+          <h2 className='post-header main-header'>
+            YOUR POSTS({posts.length})
+          </h2>
           <button onClick={handlecreatePost} className='btn primary post-btn'>
             <FaPlusCircle />
             New Post
@@ -102,6 +97,10 @@ export default function Profile() {
         </div>
         <div className='post-grid'>{postCards}</div>
       </div>
-    </div>
+      <AvatarSelectionModal
+        open={isOpen}
+        handleClick={() => setIsOpen(false)}
+      />
+    </section>
   );
 }

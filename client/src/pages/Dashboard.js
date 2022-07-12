@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout, reset, getRecentUsers } from '../features/auth/authSlice';
@@ -74,20 +74,20 @@ export default function Dashboard() {
 
   return (
     <section className='dash-section'>
-      <FullPostView open={isOpen} handleClose={closeModal} info={info} />
-      <div className='main'>
-        <div className='mid-col'>
-          <div className='top'>
-            {user && <h2 className='dash-user'>{user.name}'s Dashboard</h2>}
-            <h1 className='dash-title'>RECENT POSTS</h1>
+      <div className='dash-content'>
+        <div className='top'>
+          <div className='profile-name main-title'>{user.name}'s Dashboard</div>
+          <div className='post-header dash-header main-header'>
+            RECENT POSTS
           </div>
-          <div className='post-grid dash-grid'>{recentPostsElements}</div>
         </div>
-        <div className='right-col'>
-          <h2>NEW TRAVELERS</h2>
-          <OtherUserCard />
-        </div>
+        <div className='post-grid'>{recentPostsElements}</div>
       </div>
+      <div className='right-col'>
+        <h2>NEW TRAVELERS</h2>
+        <OtherUserCard />
+      </div>
+      <FullPostView open={isOpen} handleClose={closeModal} info={info} />
     </section>
   );
 }

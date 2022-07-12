@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { logout, reset } from '../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import UserAvatar from './UserAvatar';
-import { FaNewspaper, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import {
+  FaNewspaper,
+  FaSignOutAlt,
+  FaUser,
+  FaMoon,
+  FaSun,
+} from 'react-icons/fa';
 import { FiMenu, FiX } from 'react-icons/fi';
 import AvatarSelectionModal from './AvatarSelectionModal.js';
-import RouteSelector from '../components/RouteSelector';
+import { ThemeContext } from '../App';
 
 export default function Header() {
   const { user } = useSelector((state) => state.auth);
   const [menuState, setMenuState] = useState(false);
+  const [dark, setDark] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,6 +33,12 @@ export default function Header() {
         </Link>
       </li>
     );
+  }
+
+  const theme = useContext(ThemeContext);
+  function setMode() {
+    theme.toggleTheme();
+    setDark((prev) => !prev);
   }
 
   function onLogout() {
@@ -71,7 +84,21 @@ export default function Header() {
               <div className='text'>Logout</div>
             </div>
           </li>
-          <RouteSelector />
+          {dark ? (
+            <li className='logout-link light' onClick={setMode}>
+              <div className='link'>
+                <FaSun className='icon' />
+                <div className='text'>Light Mode</div>
+              </div>
+            </li>
+          ) : (
+            <li className='logout-link dark' onClick={setMode}>
+              <div className='link'>
+                <FaMoon className='icon' />
+                <div className='text'>Dark Mode</div>
+              </div>
+            </li>
+          )}
         </ul>
       </nav>
     </>

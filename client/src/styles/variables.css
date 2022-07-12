@@ -4,12 +4,119 @@
   --color-danger-hue: calc(
     var(--color-base-hue) - var(--color-danger-hue-offset)
   );
-  --color-background-dark: #dcdcdc;
+  --color-background-dark: #1f2325;
   --color-background-light: rgba(234, 231, 243);
   --color-text-light: black;
+  --color-text-dark: white;
   --color-sidebar-light: #5a84f0;
+  --color-sidebar-dark: #02080e;
   --color-sidebar-text-light: #ffffff;
   --color-selector-light: #4000ff;
   --color-title-light: #4000ff;
+  --color-title-dark: #ffffff;
   --color-subtitle-light: #1356ff;
+  --color-header-dark: #b3b4b8;
+  --color-card-light: white;
+  --color-card-dark: rgb(141, 141, 141);
+}
+
+#dark .profile-section {
+  background: var(--color-background-dark);
+}
+
+#dark .dash-section {
+  background: var(--color-background-dark);
+}
+
+#dark .main-title {
+  color: var(--color-title-dark);
+}
+#dark .main-header {
+  color: var(--color-header-dark);
+}
+#dark .subtitle {
+  color: var(--color-header-dark);
+}
+#dark .text {
+  color: var(--color-text-dark);
+}
+
+#dark .card {
+  background: var(--color-card-dark);
+}
+
+#dark .card .title {
+  color: var(--color-title-dark);
+}
+
+#dark .card .user {
+  color: var(--color-text-light);
+}
+
+#dark .card .description {
+  color: var(--color-text-dark);
+}
+
+#dark .card .location {
+  color: var(--color-text-dark);
+}
+
+#dark .user-card {
+  background: var(--color-card-dark);
+}
+
+#dark .user-name {
+  color: var(--color-text-dark);
+}
+
+#dark .post-main {
+  background: var(--color-background-dark);
+}
+
+#dark .post-title {
+  color: var(--color-text-dark);
+}
+
+#dark .input-group label {
+  color: var(--color-text-dark);
+}
+
+#dark .image-container .icon {
+  color: rgb(111, 128, 223);
+}
+
+#dark .image-container .img-info p {
+  color: var(--color-text-dark);
+}
+
+#dark .post-main input {
+  border: 2px solid var(--color-text-dark);
+}
+#dark .post-main textarea {
+  border: 2px solid var(--color-text-dark);
+}
+
+#dark .image-container {
+  border: 2px solid var(--color-text-dark);
+  border-style: dotted;
+}
+
+#dark .view-post-main {
+  background-color: var(--color-background-dark);
+}
+
+#dark .view-post-main .title-header {
+  color: var(--color-header-dark);
+}
+
+#dark .view-post-main .right-col-view h2 {
+  color: var(--color-header-dark);
+}
+#dark .view-post-main .right-col-view h3 {
+  color: var(--color-text-dark);
+}
+
+#dark ul,
+.right-col {
+  background: var(--color-sidebar-dark);
 }

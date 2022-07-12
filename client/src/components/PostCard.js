@@ -19,7 +19,10 @@ export default function PostCard(props) {
 
         <div className='location'>
           <FaMapMarkerAlt className='icon' />
-          <a href={`http://maps.google.com/?q=${props.location}`}>
+          <a
+            href={`http://maps.google.com/?q=${props.location}`}
+            className='text'
+          >
             {props.location}
           </a>
         </div>

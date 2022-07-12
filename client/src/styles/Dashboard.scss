@@ -11,10 +11,6 @@
   cursor: pointer;
 }
 
-.dash-section {
-  background: white;
-}
-
 .menu-icon {
   position: absolute;
   top: 0%;
@@ -34,6 +30,7 @@ nav {
   width: 15%;
   height: 100%;
   position: fixed;
+  z-index: 1000;
   left: 0%;
   transition: 0.25s ease-in-out;
 
@@ -47,27 +44,14 @@ nav {
     text-transform: uppercase;
     transition: 0.25s ease-in-out;
     width: 100%;
-    // .selector {
-    //   background: linear-gradient(
-    //     90deg,
-    //     #4000ff 17.49%,
-    //     rgba(64, 0, 255, 0) 93.35%
-    //   );
-    //   width: 100%;
-    //   height: 32px;
-    //   position: absolute;
-    //   top: 40.6%;
-    //   left: 3%;
-    //   border-radius: 5px;
-    //   z-index: 1;
-    //   transition: 0.3s ease-in-out;
-    // }
+    padding: 0.2rem;
     .name {
       color: white;
       font-weight: bold;
       margin-top: 20px;
       margin-bottom: 40px;
       align-self: center;
+      font-size: 1rem;
     }
     .main-avatar {
       //align-self: center;
@@ -87,22 +71,44 @@ nav {
       height: 8rem;
       border-radius: 50%;
     }
+    .dark {
+      margin-top: auto;
+      padding: 0rem 1rem;
+      background: linear-gradient(
+        90deg,
+        #160c35 17.49%,
+        rgba(64, 0, 255, 0) 93.35%
+      );
+      margin-bottom: 10px;
+    }
+    .light {
+      margin-top: auto;
+      padding: 0rem 1rem;
+      background: linear-gradient(
+        90deg,
+        #dce77a 17.49%,
+        rgba(64, 0, 255, 0) 93.35%
+      );
+      margin-bottom: 10px;
+      color: black;
+    }
+    li:nth-child(6) {
+    }
     li {
       position: relative;
       z-index: 1000;
       text-align: left;
       align-self: center;
       width: 100%;
-      font-size: 1.1rem;
+      font-size: 1rem;
       padding: 0rem 0.3rem;
       border-radius: 5px;
-
       .link {
-        padding: 0.5rem 0.3rem;
+        padding: 0.5rem 0rem;
         width: 100%;
         display: flex;
         gap: 10px;
-        margin-left: 20px;
+        margin-left: 0px;
       }
     }
     a {
@@ -146,43 +152,55 @@ nav {
       letter-spacing: 3px;
     }
   }
+}
 
-  .right-col {
-    right: 0;
-    width: 15%;
-    height: 100%;
-    position: fixed;
+.dash-section {
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  gap: 2rem;
+  position: relative;
+  padding: 1rem;
+  background: var(--color-background-light);
+}
+
+.right-col {
+  right: 0;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: -1; //* This is needed even or it will be above the spline on auth page
+  h2 {
+    margin-top: 80px;
+    margin-bottom: 20px;
+    color: white;
+  }
+  .user-card {
+    border-radius: 8px;
     display: flex;
-    flex-direction: column;
+    width: 80%;
+    background: white;
+    margin-bottom: 20px;
     align-items: center;
-    h2 {
-      margin-top: 80px;
-      margin-bottom: 20px;
-      color: white;
-    }
-    .user-card {
-      border-radius: 8px;
-      display: flex;
-      width: 80%;
+    gap: 10px;
+    height: 80px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    .avatar {
+      order: -1;
+      justify-content: space-between;
+      margin-left: 10px;
+      width: 60px;
+      border-radius: 50%;
       background: white;
-      margin-bottom: 20px;
-      align-items: center;
-      gap: 10px;
-      height: 80px;
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-      .avatar {
-        order: -1;
-        justify-content: space-between;
-        margin-left: 10px;
-        width: 60px;
-        border-radius: 50%;
-        background: white;
-      }
-      .user-name {
-        color: black;
-        font-size: 1.1rem;
-        font-weight: bold;
-      }
+    }
+    .user-name {
+      color: black;
+      font-size: 1.1rem;
+      font-weight: bold;
     }
   }
 }
@@ -190,25 +208,25 @@ nav {
 p {
   color: white;
 }
+@media (max-width: 768px) {
+  .dash-section {
+    width: 100%;
+    padding: 3rem;
+  }
+  .right-col {
+    background: red;
+    display: none;
+  }
+}
 
 //* POST CARD
-
-.post-grid {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; //* Alinear POSTS
-  align-items: center;
-}
-.dash-grid {
-  justify-content: flex-start;
-}
 
 .card {
   background: white;
   max-width: 300px;
   //max-height: 400px;
+  grid-column: span 1;
+  min-width: 238px;
   width: 100%;
   height: 400px;
   border-radius: 10px;
@@ -274,7 +292,7 @@ p {
   }
   nav {
     z-index: 1;
-    width: 30%;
+    width: 45%;
     ul {
       left: -100%;
     }

@@ -184,4 +184,10 @@
   background: #4d58ec;
   border: 1px solid #4d58ec;
 }
+
+@media screen and (max-width: 720px) {
+  .post-main {
+    width: 100%;
+  }
+}
 /*# sourceMappingURL=PostForm.css.map */
