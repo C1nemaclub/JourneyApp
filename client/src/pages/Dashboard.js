@@ -8,6 +8,7 @@ import OtherUserCard from '../components/OtherUserCard';
 import PostCard from '../components/PostCard';
 import { toast } from 'react-toastify';
 import FullPostView from '../components/FullPostView';
+import FirebasePostCard from '../components/FirebasePostCard';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -57,6 +58,21 @@ export default function Dashboard() {
     );
   });
 
+  const fireBasePostCards = recentPosts.map((post) => {
+    return (
+      <FirebasePostCard
+        key={post._id}
+        title={post.title}
+        imageRef={post.imageRef}
+        user={post.userName}
+        location={post.location}
+        description={post.description}
+        handleClick={openModal}
+        handleModal={handleModal}
+      />
+    );
+  });
+
   function openModal() {
     setIsOpen(true);
   }
@@ -81,7 +97,10 @@ export default function Dashboard() {
             RECENT POSTS
           </div>
         </div>
-        <div className='post-grid'>{recentPostsElements}</div>
+        <div className='post-grid'>
+          {fireBasePostCards}
+          {/* {recentPostsElements} */}
+        </div>
       </div>
       <div className='right-col'>
         <h2>NEW TRAVELERS</h2>

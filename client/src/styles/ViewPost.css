@@ -4,7 +4,8 @@
   background: var(--color-background-light);
   position: relative;
   width: 85%;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .view-card {
@@ -116,6 +117,19 @@
 @media screen and (max-width: 720px) {
   .view-post-main {
     width: 100%;
+  }
+  .view-post-main .flex-container {
+    gap: 0px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+  }
+  .view-post-main .flex-container .right-col-view {
+    margin-top: 20px;
   }
 }
 /*# sourceMappingURL=ViewPost.css.map */

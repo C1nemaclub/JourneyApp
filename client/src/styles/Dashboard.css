@@ -14,10 +14,10 @@
 }
 
 .menu-icon {
-  position: absolute;
-  top: 0%;
+  position: fixed;
+  top: 1%;
   left: 5%;
-  z-index: 1;
+  z-index: 1001;
   font-size: 2.5rem;
   display: none;
   cursor: pointer;
@@ -184,6 +184,7 @@ nav ul a {
 .dash-section {
   width: 70%;
   height: 100%;
+  min-height: 100vh;
   margin: auto;
   gap: 2rem;
   position: relative;
@@ -350,11 +351,8 @@ p {
     display: block;
   }
   nav {
-    z-index: 1;
+    left: -50%;
     width: 45%;
-  }
-  nav ul {
-    left: -100%;
   }
   .main {
     width: 90%;

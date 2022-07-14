@@ -117,6 +117,10 @@
 }
 
 #dark ul,
-.right-col {
+#dark .right-col {
   background: var(--color-sidebar-dark);
+}
+
+#dark .menu-icon {
+  color: white;
 }

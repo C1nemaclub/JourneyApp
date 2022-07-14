@@ -7,12 +7,26 @@ import { FaPlusCircle } from 'react-icons/fa';
 import PostCard from '../components/PostCard';
 import AvatarSelectionModal from '../components/AvatarSelectionModal';
 import { toast } from 'react-toastify';
+import { ref, listAll, getDownloadURL } from 'firebase/storage';
+import { projectStorage } from '../firebase/config';
+import FirebasePostCard from '../components/FirebasePostCard';
 
+const imageListRef = ref(projectStorage, 'images/');
 export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
+  const [imageList, setImageList] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    listAll(imageListRef).then((res) => {
+      res.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageList((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
 
   const { user } = useSelector((state) => state.auth);
   const { posts, isLoading, isSuccess, isError, message } = useSelector(
@@ -57,6 +71,20 @@ export default function Profile() {
     );
   });
 
+  const fireBasePostCards = posts.map((post) => {
+    return (
+      <FirebasePostCard
+        key={post._id}
+        imageRef={post.imageRef}
+        title={post.title}
+        location={post.location}
+        description={post.description}
+        user={post.userName}
+        handleClick={() => handlePost(post)}
+      />
+    );
+  });
+
   const postCards = posts.map((post, index) => {
     return (
       <PostCard
@@ -95,7 +123,18 @@ export default function Profile() {
             New Post
           </button>
         </div>
-        <div className='post-grid'>{postCards}</div>
+        <div className='post-grid'>
+          {/* {postCards} */}
+          {fireBasePostCards}
+
+          {/* {imageList.map((item) => {
+        if (item.includes(user._id)) {
+          return <img src={item} />;
+        } else {
+          return null;
+        }
+      })} */}
+        </div>
       </div>
       <AvatarSelectionModal
         open={isOpen}

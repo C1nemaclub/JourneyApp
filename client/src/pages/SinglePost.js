@@ -48,7 +48,8 @@ export default function SinglePost() {
           <div className='left-col-view'>
             <h4 className='title-header'>{post.title}</h4>
             <img
-              src={`http://localhost:5000/${post.cover}`}
+              // src={`http://localhost:5000/${post.cover}`}
+              src={`https://firebasestorage.googleapis.com/v0/b/uploadingimage-71d87.appspot.com/o/images%2F${post.imageRef}?alt=media&token=3888e9f7-7d66-4d72-b542-300c16d2a3c5`}
               className='post-img'
               alt=''
               onClick={(post) => {

@@ -27,7 +27,11 @@ export default function FullPostView(props) {
             <FaWindowClose onClick={props.handleClose} className='icon-close' />
           </div>
           <div className='modal-content'>
-            <img src={`http://localhost:5000/${props.info.cover}`} alt='' />
+            {/* <img src={`http://localhost:5000/${props.info.cover}`} alt='' /> */}
+            <img
+              src={`https://firebasestorage.googleapis.com/v0/b/uploadingimage-71d87.appspot.com/o/images%2F${props.info.imageRef}?alt=media&token=3888e9f7-7d66-4d72-b542-300c16d2a3c5`}
+              alt=''
+            />
           </div>
         </div>
       </div>

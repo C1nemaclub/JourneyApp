@@ -32,6 +32,10 @@ const postSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    imageRef: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

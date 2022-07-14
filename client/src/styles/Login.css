@@ -189,10 +189,4 @@ button:hover {
     font-size: 0.9rem;
   }
 }
-
-@media screen and (max-width: 720px) {
-  .spline {
-    opacity: 0;
-  }
-}
 /*# sourceMappingURL=Login.css.map */

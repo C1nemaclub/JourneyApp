@@ -4,7 +4,9 @@
   background: var(--color-background-light);
   position: relative;
   width: 85%;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
+  //overflow: hidden;
 }
 
 .view-card {
@@ -77,5 +79,14 @@
 @media screen and (max-width: 720px) {
   .view-post-main {
     width: 100%;
+
+    .flex-container {
+      gap: 0px;
+      flex-direction: column;
+      order: -1;
+      .right-col-view {
+        margin-top: 20px;
+      }
+    }
   }
 }

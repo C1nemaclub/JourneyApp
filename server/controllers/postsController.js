@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 const Post = require('../models/postsModel');
 const User = require('../models/usersModel');
 
+//* Craete post Route
 const createPost = asyncHandler(async (req, res) => {
   if (req.user) {
   } else {
@@ -24,6 +25,7 @@ const createPost = asyncHandler(async (req, res) => {
     cover: req.file.path,
     user: req.user._id,
     userName: req.user.name,
+    imageRef: req.body.imageRef,
   });
 
   await post.save();
@@ -80,6 +82,7 @@ const editPost = asyncHandler(async (req, res) => {
   post.likes = req.body.likes;
   post.location = req.body.location;
   post.user = req.user._id;
+  post.imageRef = req.body.imageRef,
   post.cover = req.file === undefined ? post.cover : req.file.path; //* If image wasnt sent, keep the same image
 
   await post.save();

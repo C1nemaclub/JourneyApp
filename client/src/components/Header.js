@@ -23,6 +23,17 @@ export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  let condStyle;
+
+  if (
+    window.location.pathname === '/login' ||
+    window.location.pathname === '/register'
+  ) {
+    condStyle = {
+      display: 'none',
+    };
+  }
+
   function CustomLink({ to, children, ...props }) {
     const resolvePath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvePath.pathname, end: true });
@@ -57,13 +68,13 @@ export default function Header() {
         handleClick={() => setIsOpen(false)}
         open={isOpen}
       />
-      <nav>
-        {menuState ? (
-          <FiX className='menu-icon' onClick={openMenu} />
-        ) : (
-          <FiMenu className='menu-icon' onClick={openMenu} />
-        )}
-        <ul style={{ left: menuState ? '0%' : '' }}>
+      {menuState ? (
+        <FiX className='menu-icon' onClick={openMenu} />
+      ) : (
+        <FiMenu className='menu-icon' onClick={openMenu} />
+      )}
+      <nav style={{ left: menuState ? '0%' : '' }}>
+        <ul>
           <UserAvatar handleClick={() => setIsOpen(true)} />
           <h3 className='name'>{user.name}</h3>
           <li>

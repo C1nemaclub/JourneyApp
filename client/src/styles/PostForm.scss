@@ -26,6 +26,7 @@
   transform: translate(-50%, -50%);
   display: flex;
   gap: 30px;
+
   .left-col-post {
     display: flex;
     flex-direction: column;
@@ -134,8 +135,5 @@
 @media screen and (max-width: 720px) {
   .post-main {
     width: 100%;
-
-    .post-form {
-    }
   }
 }
