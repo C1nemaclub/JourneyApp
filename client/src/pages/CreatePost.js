@@ -78,6 +78,15 @@ export default function CreatePost() {
     data.append('location', formData.location);
     data.append('likes', 0);
 
+    const data2 = {
+      imageRef: image.name + user._id,
+      title: formData.title,
+      description: formData.description,
+      location: formData.location,
+      likes: 0,
+    };
+    console.log(data2);
+
     //* Check if image exists
     if (image == null) return;
     if (acceptedFiles.includes(image.type)) {
@@ -97,21 +106,17 @@ export default function CreatePost() {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setUploadProgress(progress);
-          console.log('Upload is ' + progress + '% done');
         },
         (error) => {
           // Handle unsuccessful uploads
         },
         () => {
-          console.log('Upload completed');
-          dispatch(createPost(data));
+          dispatch(createPost(data2));
           dispatch(reset());
           navigate('/profile');
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log('File available at', downloadURL);
-          });
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {});
         }
       );
     } else {

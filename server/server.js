@@ -22,17 +22,25 @@ app.use('/api/user', userRoute);
 app.use('/api/posts', postRoute);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  app.get('*', (req, res) => {
-    return res.sendFile(
-      path.resolve(__dirname, '../', 'client', 'build', 'index.html')
-    );
-  });
+  app.use(express.static(path.join(__dirname, '/public')));
 } else {
   app.get('/', (req, res) => {
     res.send('Please set to production');
   });
 }
+
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../client/build')));
+//   app.get('*', (req, res) => {
+//     return res.sendFile(
+//       path.resolve(__dirname, '../', 'client', 'build', 'index.html')
+//     );
+//   });
+// } else {
+//   app.get('/', (req, res) => {
+//     res.send('Please set to production');
+//   });
+// }
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 const db = mongoose.connection;

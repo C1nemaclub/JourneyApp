@@ -5,14 +5,16 @@ const User = require('../models/usersModel');
 
 //* Craete post Route
 const createPost = asyncHandler(async (req, res) => {
+  console.log(req.body);
+
   if (req.user) {
   } else {
     res.status(401);
     throw new Error('You need to be logged in');
   }
-  const { title, description, likes, location, cover } = req.body;
+  const { title, description, likes, location, imageRef } = req.body;
 
-  if (!title || !description || likes == null || !location || !req.file.path) {
+  if (!title || !description || likes == null || !location || !imageRef) {
     res.status(400);
     throw new Error('Please fill all fields');
   }
@@ -22,7 +24,7 @@ const createPost = asyncHandler(async (req, res) => {
     description: description,
     likes: likes,
     location: location,
-    cover: req.file.path,
+    cover: 'test',
     user: req.user._id,
     userName: req.user.name,
     imageRef: req.body.imageRef,
@@ -82,8 +84,9 @@ const editPost = asyncHandler(async (req, res) => {
   post.likes = req.body.likes;
   post.location = req.body.location;
   post.user = req.user._id;
-  post.imageRef = req.body.imageRef,
-  post.cover = req.file === undefined ? post.cover : req.file.path; //* If image wasnt sent, keep the same image
+  post.imageRef =
+    req.body.imageRef === undefined ? post.imageRef : req.body.imageRef;
+  post.cover = ''; //* If image wasnt sent, keep the same image
 
   await post.save();
 

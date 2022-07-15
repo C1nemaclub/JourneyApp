@@ -4,7 +4,7 @@ const API_URL = 'api/posts/';
 const createPost = async (postData, token) => {
   const config = {
     headers: {
-      'content-type': 'multipart/form',
+      'content-type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     onUploadProgress: (progressEvent) => {
