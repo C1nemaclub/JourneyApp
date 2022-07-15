@@ -97,10 +97,7 @@ export default function Dashboard() {
             RECENT POSTS
           </div>
         </div>
-        <div className='post-grid'>
-          {fireBasePostCards}
-          {/* {recentPostsElements} */}
-        </div>
+        <div className='post-grid'>{fireBasePostCards}</div>
       </div>
       <div className='right-col'>
         <h2>NEW TRAVELERS</h2>
