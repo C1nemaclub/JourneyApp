@@ -127,14 +127,6 @@ export default function Profile() {
           {/* {postCards} */}
           {fireBasePostCards}
           {posts.length <= 0 && <h3>You dont have any posts yet</h3>}
-
-          {/* {imageList.map((item) => {
-        if (item.includes(user._id)) {
-          return <img src={item} />;
-        } else {
-          return null;
-        }
-      })} */}
         </div>
       </div>
       <AvatarSelectionModal
