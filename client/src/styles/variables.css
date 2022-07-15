@@ -4,20 +4,29 @@
   --color-danger-hue: calc(
     var(--color-base-hue) - var(--color-danger-hue-offset)
   );
-  --color-background-dark: #1f2325;
+  --color-background-dark: linear-gradient(
+    hsla(var(--color-base-hue), 100%, 8%, 1),
+    hsla(var(--color-base-hue), 100%, 16%, 1)
+  );
   --color-background-light: rgba(234, 231, 243);
   --color-text-light: black;
   --color-text-dark: white;
-  --color-sidebar-light: #5a84f0;
-  --color-sidebar-dark: #02080e;
+  --color-sidebar-light: rgba(117, 155, 188, 0.7);
+  --color-sidebar-dark: linear-gradient(
+    hsla(var(--color-base-hue), 100%, 8%, 1),
+    hsla(var(--color-base-hue), 100%, 6%, 1)
+  );
   --color-sidebar-text-light: #ffffff;
   --color-selector-light: #4000ff;
   --color-title-light: #4000ff;
   --color-title-dark: #ffffff;
   --color-subtitle-light: #1356ff;
-  --color-header-dark: #b3b4b8;
+  --color-header-dark: hsla(var(--color-base-hue), 100%, 87%, 1);
   --color-card-light: white;
-  --color-card-dark: rgb(141, 141, 141);
+  --color-card-dark: linear-gradient(
+    hsla(var(--color-base-hue), 100%, 8%, 1),
+    hsla(var(--color-base-hue), 100%, 8%, 1)
+  );
 }
 
 #dark .profile-section {
@@ -25,6 +34,10 @@
 }
 
 #dark .dash-section {
+  background: var(--color-background-dark);
+}
+
+#dark .view-post-main {
   background: var(--color-background-dark);
 }
 
@@ -45,12 +58,12 @@
   background: var(--color-card-dark);
 }
 
-#dark .card .title {
-  color: var(--color-title-dark);
+#dark .user {
+  color: hsla(var(--color-base-hue), 100%, 87%, 1);
 }
 
-#dark .card .user {
-  color: var(--color-text-light);
+#dark .card .title {
+  color: var(--color-title-dark);
 }
 
 #dark .card .description {
@@ -65,6 +78,10 @@
   background: var(--color-card-dark);
 }
 
+#dark .card-user {
+  color: var(--color-header-dark);
+}
+
 #dark .user-name {
   color: var(--color-text-dark);
 }
@@ -72,13 +89,17 @@
 #dark .post-main {
   background: var(--color-background-dark);
 }
-
-#dark .post-title {
+#dark input,
+#dark textarea {
   color: var(--color-text-dark);
 }
 
+#dark .post-title {
+  color: var(--color-header-dark);
+}
+
 #dark .input-group label {
-  color: var(--color-text-dark);
+  color: var(--color-header-dark);
 }
 
 #dark .image-container .icon {
@@ -114,6 +135,14 @@
 }
 #dark .view-post-main .right-col-view h3 {
   color: var(--color-text-dark);
+}
+
+#dark .avatar-modal {
+  background: var(--color-card-dark);
+}
+
+#dark .modal-title {
+  color: var(--color-header-dark);
 }
 
 #dark ul,

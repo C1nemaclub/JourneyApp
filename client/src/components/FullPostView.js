@@ -10,7 +10,7 @@ export default function FullPostView(props) {
     bottom: 0,
     right: 0,
     backgroundColor: 'rgba(0,0,0,.7)',
-    zIndex: 1000,
+    zIndex: 2000,
   };
 
   if (!props.open) {

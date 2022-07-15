@@ -1,7 +1,5 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
-
+require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -23,16 +21,19 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/user', userRoute);
 app.use('/api/posts', postRoute);
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.get('*', (req, res) => {
+    return res.sendFile(
+      path.resolve(__dirname, '../', 'client', 'build', 'index.html')
+    );
+  });
+}
+
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', (err) => console.log(err));
 db.on('open', () => console.log('Connected to Mongoose'));
-
-app.get('/test', async (req, res) => {
-  const newUsers = await User.find({}).sort({ createdAt: -1 }).limit(3);
-
-  res.json(newUsers);
-});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

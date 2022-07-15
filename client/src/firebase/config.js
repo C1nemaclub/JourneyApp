@@ -24,12 +24,12 @@ import { getFirestore } from 'firebase/firestore/lite';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBFZFQlK6EecWKupkCFmoeLKA5u7bP1N38',
-  authDomain: 'uploadingimage-71d87.firebaseapp.com',
-  projectId: 'uploadingimage-71d87',
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
   storageBucket: 'uploadingimage-71d87.appspot.com',
-  messagingSenderId: '1079793753064',
-  appId: '1:1079793753064:web:016944ec35e3fc3a3da25d',
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
 };
 
 // Initialize Firebase

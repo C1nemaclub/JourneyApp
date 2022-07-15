@@ -44,11 +44,12 @@ nav {
     transition: 0.25s ease-in-out;
     width: 100%;
     padding: 0.2rem;
+    background: var(--color-sidebar-light);
     .name {
       color: white;
       font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 40px;
+      margin-top: 40px;
+      margin-bottom: 30px;
       align-self: center;
       font-size: 1rem;
     }
@@ -58,6 +59,8 @@ nav {
       top: 0%;
       left: 50%;
       transform: translate(-50%, -50%);
+      background: var(--color-title-light);
+      border-radius: 50%;
     }
 
     .avatar-container {
@@ -65,7 +68,7 @@ nav {
       position: relative;
       align-self: center;
       //clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-      background: #4000ff;
+      //background: #4000ff;
       width: 8rem;
       height: 8rem;
       border-radius: 50%;
@@ -85,11 +88,14 @@ nav {
       padding: 0rem 1rem;
       background: linear-gradient(
         90deg,
-        #dce77a 17.49%,
+        #555746 17.49%,
         rgba(64, 0, 255, 0) 93.35%
       );
       margin-bottom: 10px;
       color: black;
+      .icon {
+        color: white;
+      }
     }
 
     li {
@@ -172,6 +178,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--color-sidebar-light);
   z-index: -1; //* This is needed even or it will be above the spline on auth page
   h2 {
     margin-top: 80px;
@@ -270,11 +277,12 @@ p {
     }
   }
 
-  .user {
+  .card-user {
     margin-top: 14px;
     color: #1356ff;
-    font-weight: bold;
+    font-weight: normal;
     letter-spacing: 1px;
+    font-size: 1.1rem;
   }
 
   .description {
@@ -289,9 +297,13 @@ p {
   .menu-icon {
     display: block;
   }
+
   nav {
     left: -50%;
     width: 45%;
+    ul {
+      backdrop-filter: blur(3px);
+    }
   }
   .main {
     width: 90%;

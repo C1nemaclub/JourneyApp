@@ -126,6 +126,7 @@ export default function Profile() {
         <div className='post-grid'>
           {/* {postCards} */}
           {fireBasePostCards}
+          {posts.length <= 0 && <h3>You dont have any posts yet</h3>}
 
           {/* {imageList.map((item) => {
         if (item.includes(user._id)) {

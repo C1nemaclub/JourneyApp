@@ -5,28 +5,47 @@
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  min-height: 100vh;
   background: var(--color-background-light);
+}
+
+.post-container {
+  width: 80%;
+  max-width: 850px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
 }
 
 .post-title {
   color: var(--color-title-light);
   font-weight: normal;
   font-size: 2.4rem;
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-bottom: 1.2rem;
 }
 
 .post-form {
-  width: 80%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,9 +204,52 @@
   border: 1px solid #4d58ec;
 }
 
+.upload {
+  font-size: 5rem;
+  color: var(--color-title-light);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+#dark .upload {
+  color: white;
+}
+
+.photo {
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 73%;
+  left: 38%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.progress-bar .progress-bar-text {
+  text-decoration: none;
+  display: none;
+}
+
 @media screen and (max-width: 720px) {
   .post-main {
     width: 100%;
+  }
+  .post-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+  .post-form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 /*# sourceMappingURL=PostForm.css.map */

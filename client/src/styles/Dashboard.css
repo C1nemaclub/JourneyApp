@@ -57,13 +57,14 @@ nav ul {
   transition: 0.25s ease-in-out;
   width: 100%;
   padding: 0.2rem;
+  background: var(--color-sidebar-light);
 }
 
 nav ul .name {
   color: white;
   font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 30px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -76,6 +77,8 @@ nav ul .main-avatar {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  background: var(--color-title-light);
+  border-radius: 50%;
 }
 
 nav ul .avatar-container {
@@ -84,7 +87,6 @@ nav ul .avatar-container {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  background: #4000ff;
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
@@ -101,10 +103,14 @@ nav ul .dark {
 nav ul .light {
   margin-top: auto;
   padding: 0rem 1rem;
-  background: -webkit-gradient(linear, left top, right top, color-stop(17.49%, #dce77a), color-stop(93.35%, rgba(64, 0, 255, 0)));
-  background: linear-gradient(90deg, #dce77a 17.49%, rgba(64, 0, 255, 0) 93.35%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(17.49%, #555746), color-stop(93.35%, rgba(64, 0, 255, 0)));
+  background: linear-gradient(90deg, #555746 17.49%, rgba(64, 0, 255, 0) 93.35%);
   margin-bottom: 10px;
   color: black;
+}
+
+nav ul .light .icon {
+  color: white;
 }
 
 nav ul li {
@@ -208,6 +214,7 @@ nav ul a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: var(--color-sidebar-light);
   z-index: -1;
 }
 
@@ -332,11 +339,12 @@ p {
   color: var(--color-subtitle-light);
 }
 
-.card .user {
+.card .card-user {
   margin-top: 14px;
   color: #1356ff;
-  font-weight: bold;
+  font-weight: normal;
   letter-spacing: 1px;
+  font-size: 1.1rem;
 }
 
 .card .description {
@@ -353,6 +361,10 @@ p {
   nav {
     left: -50%;
     width: 45%;
+  }
+  nav ul {
+    -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
   }
   .main {
     width: 90%;

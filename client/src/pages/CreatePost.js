@@ -5,7 +5,7 @@ import { createPost, reset } from '../features/posts/postSlice';
 import { useDropzone } from 'react-dropzone';
 import '../styles/PostForm.css';
 import { useSelector } from 'react-redux';
-
+import ProgressBar from '../components/ProgressBar';
 import { FaFileImage } from 'react-icons/fa';
 import { projectStorage } from '../firebase/config';
 import {
@@ -15,12 +15,19 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from 'firebase/storage';
+import { toast } from 'react-toastify';
 
 export default function CreatePost() {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState([]);
   const { user } = useSelector((state) => state.auth);
+  const [uploadProgress, setUploadProgress] = useState(null);
+  const [uploadStart, setUploadStart] = useState(null);
+  const [acceptedFiles, setAcceptedFiles] = useState([
+    'image/jpeg',
+    'image/png',
+  ]);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -73,32 +80,43 @@ export default function CreatePost() {
 
     //* Check if image exists
     if (image == null) return;
-    const imageRef = ref(projectStorage, `images/${image.name + user._id}`);
-    const uploadTask = uploadBytesResumable(imageRef, image);
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-      },
-      (error) => {
-        // Handle unsuccessful uploads
-      },
-      () => {
-        console.log('Upload completed');
-        dispatch(createPost(data));
-        dispatch(reset());
-        navigate('/profile');
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log('File available at', downloadURL);
-        });
-      }
-    );
+    if (acceptedFiles.includes(image.type)) {
+      const imageRef = ref(projectStorage, `images/${image.name + user._id}`);
+      const metadata = {
+        contentType: 'image/jpeg',
+        contentType: 'image/png',
+      };
+
+      const uploadTask = uploadBytesResumable(imageRef, image, metadata);
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          setUploadStart(true);
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setUploadProgress(progress);
+          console.log('Upload is ' + progress + '% done');
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+        },
+        () => {
+          console.log('Upload completed');
+          dispatch(createPost(data));
+          dispatch(reset());
+          navigate('/profile');
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log('File available at', downloadURL);
+          });
+        }
+      );
+    } else {
+      toast.error('Supported files are JPEG and PNG');
+    }
   }
 
   function Cancel() {
@@ -108,65 +126,80 @@ export default function CreatePost() {
   return (
     <>
       <div className='post-main'>
-        <h1 className='post-title'>New Post</h1>
-        <form onSubmit={(e) => onSubmit(e)} className='post-form'>
-          <div className='left-col-post'>
-            <div className='input-group'>
-              <input
-                type='text'
-                name='title'
-                value={formData.title}
-                onChange={(e) => onChange(e)}
-              />
-              <label>Title</label>
-            </div>
-            <div className='input-group'>
-              <textarea
-                cols='4'
-                rows='6'
-                type='text'
-                name='description'
-                value={formData.description}
-                onChange={(e) => onChange(e)}
-              />
-              <label>Description</label>
-            </div>
-          </div>
-          <div className='right-col-post'>
-            <div className='input-group'>
-              <input
-                type='text'
-                name='location'
-                value={formData.location}
-                onChange={(e) => onChange(e)}
-              />
-              <label>Location</label>
-            </div>
-            <div className='input-group photo'>
-              <div {...getRootProps()} className='image-container'>
-                <input {...getInputProps()} />
-                <div className='img-info'>
-                  <p>
-                    Drag & Drop your image or <span>Browse</span>
-                  </p>
-                  <FaFileImage className='icon' />
-                  <p>Supports JPEG, JPG, PNG</p>
-                </div>
-                {images}
+        <div className='post-container'>
+          <h1 className='post-title'>New Post</h1>
+          <form onSubmit={(e) => onSubmit(e)} className='post-form'>
+            <div className='left-col-post'>
+              <div className='input-group'>
+                <input
+                  type='text'
+                  name='title'
+                  value={formData.title}
+                  onChange={(e) => onChange(e)}
+                />
+                <label>Title</label>
               </div>
-              <label>Photo</label>
+              <div className='input-group'>
+                <textarea
+                  cols='4'
+                  rows='6'
+                  type='text'
+                  name='description'
+                  value={formData.description}
+                  onChange={(e) => onChange(e)}
+                />
+                <label>Description</label>
+              </div>
             </div>
+            <div className='right-col-post'>
+              <div className='input-group'>
+                <input
+                  type='text'
+                  name='location'
+                  value={formData.location}
+                  onChange={(e) => onChange(e)}
+                />
+                <label>Location</label>
+              </div>
+              <div className='input-group photo'>
+                <div {...getRootProps()} className='image-container'>
+                  <input {...getInputProps()} />
+                  <div className='img-info'>
+                    <p>
+                      Drag & Drop your image or <span>Browse</span>
+                    </p>
+                    <FaFileImage className='icon' />
+                    <p>Supports JPEG, JPG, PNG</p>
+                  </div>
+                  {images}
+                  {uploadStart && (
+                    <ProgressBar
+                      bgcolor='#4d58ec'
+                      progress={uploadProgress}
+                      height={15}
+                    />
+                  )}
 
-            <div className='buttons'>
-              <button type='button' className='btn danger' onClick={Cancel}>
-                Cancel
-              </button>
-              <button type='submit' className='btn primary'>
-                Create
-              </button>
+                  {/* {uploadStart && (
+                    <h3 className='upload'>{`${uploadProgress.toFixed(
+                      0
+                    )}%`}</h3>
+                  )} */}
+                </div>
+                <label>Photo</label>
+              </div>
+
+              <div className='buttons'>
+                <button type='button' className='btn danger' onClick={Cancel}>
+                  Cancel
+                </button>
+                <button type='submit' className='btn primary'>
+                  Create
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </>
   );

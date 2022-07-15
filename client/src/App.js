@@ -5,6 +5,7 @@ import Authentication from './pages/Authentication';
 import ProfileNav from './pages/ProfileNav';
 import { useSelector } from 'react-redux';
 import './styles/variables.css';
+import Logo from './assets/logo.png';
 export const ThemeContext = createContext(null);
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div id={theme}>
+        <img src={Logo} alt='logo' className='logo' />
         {!user && <Authentication />}
         {user && <ProfileNav />}
         <ToastContainer

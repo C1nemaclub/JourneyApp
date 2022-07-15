@@ -26,7 +26,7 @@ export default function FirebasePostCard(props) {
             {props.location}
           </a>
         </div>
-        <div className='user'>{props.user}</div>
+        <div className='card-user'>{props.user}</div>
         <div className='description'>{props.description}</div>
       </div>
     </>

@@ -4,9 +4,10 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 612px;
+  width: 85%;
+  max-width: 600px;
   height: auto;
-  background: #ffffff;
+  background: var(--color-card-light);
   z-index: 1000;
   border-radius: 10px;
   overflow: hidden;

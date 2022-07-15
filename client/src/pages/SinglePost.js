@@ -5,6 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import { deletePost } from '../features/posts/postSlice';
 import { toast } from 'react-toastify';
 import FullPostView from '../components/FullPostView';
+import { projectStorage } from '../firebase/config';
+import {
+  ref,
+  uploadBytes,
+  listAll,
+  getDownloadURL,
+  uploadBytesResumable,
+  deleteObject,
+} from 'firebase/storage';
 
 import '../styles/ViewPost.css';
 
@@ -16,10 +25,22 @@ export default function SinglePost() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handlePostDelete(postId) {
-    dispatch(deletePost(postId));
-    navigate('/profile');
-    toast.success('Post deleted successfully');
+  function handlePostDelete(postId, imageName) {
+    const imageRef = ref(projectStorage, `images/${imageName}`);
+
+    deleteObject(imageRef)
+      .then(() => {
+        // File deleted successfully
+        dispatch(deletePost(postId));
+        navigate('/profile');
+        toast.success('Post deleted successfully');
+      })
+      .catch((error) => {
+        toast.error('Error deleting post');
+        console.log(error);
+
+        // Uh-oh, an error occurred!
+      });
   }
 
   function handlePostEdit(post) {
@@ -72,7 +93,7 @@ export default function SinglePost() {
                   Cancel
                 </button>
                 <button
-                  onClick={() => handlePostDelete(post._id)}
+                  onClick={() => handlePostDelete(post._id, post.imageRef)}
                   key={post._id + 1}
                   className='btn danger delete-btn'
                 >

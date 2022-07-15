@@ -36,3 +36,16 @@ a {
   align-items: center;
 }
 
+.logo {
+  position: absolute;
+  z-index: 1001;
+  width: 100px;
+  left: 1%;
+  top: 1%;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    left: 70%;
+  }
+}
