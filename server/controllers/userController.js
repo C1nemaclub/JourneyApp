@@ -4,7 +4,7 @@ const User = require('../models/usersModel');
 const jwt = require('jsonwebtoken');
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, avatar } = req.body;
 
   //*Verify if all data was inputed
   if (!name || !email || !password) {
@@ -28,7 +28,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name: name,
     email: email,
     password: hashedPassword,
-    avatar: 0,
+    avatar: avatar,
   });
   console.log(user);
 
@@ -41,6 +41,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      avatar: avatar,
       token: generateToken(user._id),
     });
   } else {

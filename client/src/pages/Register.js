@@ -55,6 +55,7 @@ export default function Register() {
         name: name,
         email: email,
         password: password,
+        avatar: 0,
       };
       dispatch(register(userData));
       dispatch(logout());

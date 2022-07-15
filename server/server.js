@@ -28,6 +28,10 @@ if (process.env.NODE_ENV === 'production') {
       path.resolve(__dirname, '../', 'client', 'build', 'index.html')
     );
   });
+} else {
+  app.get('/', (req, res) => {
+    res.send('Please set to production');
+  });
 }
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });

@@ -4,13 +4,7 @@ const API_URL = 'api/user/';
 
 const register = async (userData) => {
   const config = {
-    onUploadProgress: (progressEvent) => {
-      console.log(
-        'Upload Progress: ' +
-          Math.round((progressEvent.loaded / progressEvent.total) * 100) +
-          '%'
-      );
-    },
+    onUploadProgress: (progressEvent) => {},
   };
 
   const response = await axios.post(API_URL + 'register', userData, config);

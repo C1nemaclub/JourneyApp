@@ -5,6 +5,7 @@ import avatars from '../avatars';
 export default function UserAvatar(props) {
   const { user } = useSelector((state) => state.auth);
   const [userAvatars, setUserAvatars] = useState(avatars);
+
   const currentAvatar = userAvatars.map((item) => {
     if (user.avatar === item.id) {
       return (
@@ -13,7 +14,7 @@ export default function UserAvatar(props) {
             <img
               className='main-avatar'
               src={item.src}
-              alt=''
+              alt='avatar'
               key={item.id}
               onClick={props.handleClick}
             />
