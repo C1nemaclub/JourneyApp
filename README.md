@@ -5,7 +5,7 @@ FullStack application  for sharing images about trips you have made and read oth
 
 In this website you can share photos and description about trips you have made as well as discovering others adventures
 
-** Features**
+**Features**
 * Login/Register screen featuring a 3D spline with the website's dashboard.
 * MongoDB for the database
 * Node.js and express for the backend
@@ -15,7 +15,7 @@ In this website you can share photos and description about trips you have made a
 * Darkmode
 * Avatar change
 
-** Uses**
+**Uses**
 * you can post pictures with a title, description and location
 * you can edit any post you have made
 * you can delete any post you have made
