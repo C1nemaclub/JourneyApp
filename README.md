@@ -12,6 +12,7 @@ In this website you can share photos and description about trips you have made a
 * React for the frontend
 * Firebase for the storage of the images
 * Darkmode
+* Avatar change
 
 **Uses
 * you can post pictures with a title, description and location
