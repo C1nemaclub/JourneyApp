@@ -11,6 +11,7 @@ In this website you can share photos and description about trips you have made a
 * Node.js and express for the backend
 * React for the frontend
 * Firebase for the storage of the images
+* Responsiveness for any device
 * Darkmode
 * Avatar change
 
