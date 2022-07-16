@@ -20,3 +20,8 @@ In this website you can share photos and description about trips you have made a
 * you can edit any post you have made
 * you can delete any post you have made
 * you can see others posts in the dashboard
+
+Preview
+
+![FireShot Capture 009 - Journey - journeyappv1 herokuapp com](https://user-images.githubusercontent.com/98051106/179336772-d36fdad7-2ce4-4868-8248-b5c90ef37077.png)
+![FireShot Capture 010 - Santiago Velasquez's Dashboard - journeyappv1 herokuapp com](https://user-images.githubusercontent.com/98051106/179336776-3d86698f-3822-42ee-adf1-e25edbaa2273.png)
