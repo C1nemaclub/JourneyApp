@@ -2,6 +2,8 @@ import axios from 'axios';
 const API_URL = 'api/posts/';
 
 const createPost = async (postData, token) => {
+  console.log(postData);
+
   const config = {
     headers: {
       'content-type': 'application/json',
@@ -55,9 +57,11 @@ const deletePost = async (postId, token) => {
 };
 
 const editPost = async (postData, token) => {
+  console.log(postData._id);
+
   const config = {
     headers: {
-      'content-type': 'multipart/form-data',
+      'content-type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
   };

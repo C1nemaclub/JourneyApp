@@ -60,7 +60,9 @@ const deletePost = asyncHandler(async (req, res) => {
 });
 
 const editPost = asyncHandler(async (req, res) => {
-  const post = await Post.findById(req.body.oldId);
+  console.log(req.body);
+
+  const post = await Post.findById(req.body._id);
 
   if (!req.user) {
     res.status(400);
@@ -86,11 +88,11 @@ const editPost = asyncHandler(async (req, res) => {
   post.user = req.user._id;
   post.imageRef =
     req.body.imageRef === undefined ? post.imageRef : req.body.imageRef;
-  post.cover = ''; //* If image wasnt sent, keep the same image
+  post.cover = 'test'; //* If image wasnt sent, keep the same image
 
   await post.save();
 
-  res.status(200).json({ id: req.body.oldId });
+  res.status(200).json({ id: req.body._id });
 });
 const getMe = asyncHandler(async (req, res) => {
   if (!req.user) {

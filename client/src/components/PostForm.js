@@ -58,43 +58,48 @@ export default function PostForm(props) {
 
   function onSubmit(e) {
     e.preventDefault();
-    const data = new FormData();
-    data.append('file', image);
-    data.append('imageRef', image.name + user._id);
-    data.append('title', formData.title);
-    data.append('description', formData.description);
-    data.append('location', formData.location);
-    data.append('likes', 0);
-    data.append('oldId', formData._id);
+    const data = {
+      title: formData.title,
+      description: formData.description,
+      location: formData.location,
+      likes: 0,
+      _id: formData._id,
+    };
+
+    if (image) {
+      data.imageRef = image.name + user._id;
+    }
 
     //* Check if image exists
-    if (image == null) return;
-    const imageRef = ref(projectStorage, `images/${image.name + user._id}`);
-    const uploadTask = uploadBytesResumable(imageRef, image);
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-      },
-      (error) => {
-        // Handle unsuccessful uploads
-      },
-      () => {
-        console.log('Upload completed');
-        dispatch(editPost(data));
-        navigate('/profile');
-        toast.success('Post edited successfully');
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log('File available at', downloadURL);
-        });
-      }
-    );
+    if (image == null) {
+      dispatch(editPost(data));
+      navigate('/profile');
+      toast.success('Post edited successfully');
+    } else {
+      const imageRef = ref(projectStorage, `images/${image.name + user._id}`);
+      const uploadTask = uploadBytesResumable(imageRef, image);
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+          console.log(error);
+        },
+        () => {
+          dispatch(editPost(data));
+          navigate('/profile');
+          toast.success('Post edited successfully');
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {});
+        }
+      );
+    }
   }
   const images = file.map((file, index) => (
     <img key={index} src={file.preview} alt='image' className='prev' />
@@ -103,7 +108,7 @@ export default function PostForm(props) {
   function Cancel() {
     navigate(-1);
   }
-  
+
   return (
     <>
       <div className='post-main'>
