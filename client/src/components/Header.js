@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { logout, reset } from '../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,19 +21,9 @@ export default function Header() {
   const [menuState, setMenuState] = useState(false);
   const [dark, setDark] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  let condStyle;
-
-  if (
-    window.location.pathname === '/login' ||
-    window.location.pathname === '/register'
-  ) {
-    condStyle = {
-      display: 'none',
-    };
-  }
 
   function CustomLink({ to, children, ...props }) {
     const resolvePath = useResolvedPath(to);
@@ -46,6 +36,9 @@ export default function Header() {
       </li>
     );
   }
+  useEffect(() => {
+    setMenuState(false);
+  }, []);
 
   const theme = useContext(ThemeContext);
   function setMode() {
@@ -69,6 +62,7 @@ export default function Header() {
         handleClick={() => setIsOpen(false)}
         open={isOpen}
       />
+      <ConfirmModal handleClick={() => setIsOpen2(false)} open={isOpen2} />
       {menuState ? (
         <FiX className='menu-icon' onClick={openMenu} />
       ) : (
@@ -90,7 +84,7 @@ export default function Header() {
               <div className='text'>Profile</div>
             </CustomLink>
           </li>
-          <li className='logout-link ' onClick={onLogout}>
+          <li className='logout-link ' onClick={() => setIsOpen2(true)}>
             <div className='link'>
               <FaSignOutAlt className='icon' />
               <div className='text'>Logout</div>
