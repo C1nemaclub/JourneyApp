@@ -60,48 +60,50 @@ export default function Login() {
 
   return (
     <>
-      <div className='container'>
-        <div className='left-col'>
-          <h1 className='title'>Start discovering new adventures</h1>
-          <h1 className='reg-label'>LOGIN</h1>
-          <form onSubmit={(e) => onSubmit(e)} className='login-form'>
-            <div className='form'>
-              <input
-                required
-                className='form__input'
-                type='email'
-                name='email'
-                value={formData.email}
-                onChange={(e) => onChange(e)}
-                placeholder=' '
-              />
-              <label className='form__label'>Email</label>
-            </div>
-            <div className='form'>
-              <input
-                required
-                className='form__input'
-                type='password'
-                name='password'
-                value={formData.password}
-                onChange={(e) => onChange(e)}
-                placeholder=' '
-              />
-              <label className='form__label'>Password</label>
-            </div>
+      <div className='login-section'>
+        <div className='container'>
+          <div className='left-col'>
+            <h1 className='title'>Start discovering new adventures</h1>
+            <h1 className='reg-label'>LOGIN</h1>
+            <form onSubmit={(e) => onSubmit(e)} className='login-form'>
+              <div className='form'>
+                <input
+                  required
+                  className='form__input'
+                  type='email'
+                  name='email'
+                  value={formData.email}
+                  onChange={(e) => onChange(e)}
+                  placeholder=' '
+                />
+                <label className='form__label'>Email</label>
+              </div>
+              <div className='form'>
+                <input
+                  required
+                  className='form__input'
+                  type='password'
+                  name='password'
+                  value={formData.password}
+                  onChange={(e) => onChange(e)}
+                  placeholder=' '
+                />
+                <label className='form__label'>Password</label>
+              </div>
 
-            <button className='btn login-btn'>
-              LOGIN<span></span>
-            </button>
-          </form>
-          <div className='register-message message'>
-            Don't have an account yet?{' '}
-            <Link to='/register' className='register-link'>
-              Register
-            </Link>
+              <button className='btn login-btn'>
+                LOGIN<span></span>
+              </button>
+            </form>
+            <div className='register-message message'>
+              Don't have an account yet?{' '}
+              <Link to='/register' className='register-link'>
+                Register
+              </Link>
+            </div>
           </div>
+          <div className='right-col'></div>
         </div>
-        <div className='right-col'></div>
       </div>
     </>
   );

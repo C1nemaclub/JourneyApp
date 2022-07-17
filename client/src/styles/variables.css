@@ -11,7 +11,7 @@
   --color-background-light: rgba(234, 231, 243);
   --color-text-light: black;
   --color-text-dark: white;
-  --color-sidebar-light: rgba(117, 155, 188, 0.7);
+  --color-sidebar-light: rgba(117, 155, 188, 0.9);
   --color-sidebar-dark: linear-gradient(
     hsla(var(--color-base-hue), 100%, 8%, 1),
     hsla(var(--color-base-hue), 100%, 6%, 1)

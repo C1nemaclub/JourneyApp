@@ -92,8 +92,11 @@ nav ul .avatar-container {
   border-radius: 50%;
 }
 
+nav ul li:nth-child(4) {
+  margin-bottom: auto;
+}
+
 nav ul .dark {
-  margin-top: auto;
   padding: 0rem 1rem;
   background: -webkit-gradient(linear, left top, right top, color-stop(17.49%, #160c35), color-stop(93.35%, rgba(64, 0, 255, 0)));
   background: linear-gradient(90deg, #160c35 17.49%, rgba(64, 0, 255, 0) 93.35%);
@@ -101,7 +104,6 @@ nav ul .dark {
 }
 
 nav ul .light {
-  margin-top: auto;
   padding: 0rem 1rem;
   background: -webkit-gradient(linear, left top, right top, color-stop(17.49%, #555746), color-stop(93.35%, rgba(64, 0, 255, 0)));
   background: linear-gradient(90deg, #555746 17.49%, rgba(64, 0, 255, 0) 93.35%);
@@ -267,7 +269,7 @@ p {
 @media (max-width: 768px) {
   .dash-section {
     width: 100%;
-    padding: 3rem;
+    padding: 4rem;
   }
   .right-col {
     background: red;
@@ -354,7 +356,7 @@ p {
   white-space: wrap;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
   .menu-icon {
     display: block;
   }

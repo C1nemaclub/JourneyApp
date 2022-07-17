@@ -11,6 +11,14 @@ html {
   font-size: 100%;
 }
 
+.login-section {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   position: relative;
   //background: #0e1129;
@@ -169,6 +177,8 @@ button:hover {
   }
   .container {
     justify-content: center;
+    align-items: center;
+    margin-left: 0;
   }
 }
 

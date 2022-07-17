@@ -73,8 +73,11 @@ nav {
       height: 8rem;
       border-radius: 50%;
     }
+    li:nth-child(4) {
+      margin-bottom: auto; //* Push Logout and Theme Mode to the bottom
+    }
     .dark {
-      margin-top: auto;
+      //margin-top: auto;
       padding: 0rem 1rem;
       background: linear-gradient(
         90deg,
@@ -84,7 +87,7 @@ nav {
       margin-bottom: 10px;
     }
     .light {
-      margin-top: auto;
+      //margin-top: auto;
       padding: 0rem 1rem;
       background: linear-gradient(
         90deg,
@@ -217,7 +220,7 @@ p {
 @media (max-width: 768px) {
   .dash-section {
     width: 100%;
-    padding: 3rem;
+    padding: 4rem;
   }
   .right-col {
     background: red;
@@ -293,7 +296,7 @@ p {
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
   .menu-icon {
     display: block;
   }

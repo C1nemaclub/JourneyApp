@@ -62,7 +62,7 @@ export default function AvatarSelectionModal(props) {
 
   return ReactDom.createPortal(
     <>
-      <dov style={overlay_style}></dov>
+      <div style={overlay_style}></div>
       <div className='avatar-modal'>
         <div className='modal-title'>
           <h2> Avatar Selection</h2>

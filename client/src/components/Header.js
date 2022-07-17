@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fa';
 import { FiMenu, FiX } from 'react-icons/fi';
 import AvatarSelectionModal from './AvatarSelectionModal.js';
+import ConfirmModal from './ConfirmModal.js';
 import { ThemeContext } from '../App';
 
 export default function Header() {
