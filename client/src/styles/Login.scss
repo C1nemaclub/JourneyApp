@@ -16,30 +16,37 @@ html {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 1%;
+    top: 5%;
+    width: 2px;
+    height: 550px;
+    background: linear-gradient(rgb(219, 111, 11), rgba(64, 0, 255, 1));
+  }
 }
 
 .container {
   position: relative;
-  //background: #0e1129;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 100%;
+  width: 40%; //*
   height: 100%;
   margin-left: 20px;
-  padding: 0.5rem;
-  //justify-content: center;
-  overflow-x: hidden;
+  padding: 0.5rem; //*
+  margin-right: auto;
   &::after {
     content: '';
     position: absolute;
     left: 0;
     top: 10%;
-    width: 2px;
+    //width: 2px;
     height: 550px;
     background: linear-gradient(rgb(219, 111, 11), rgba(64, 0, 255, 1));
   }
@@ -60,7 +67,7 @@ html {
 // }
 
 .left-col {
-  margin-top: 60px;
+  margin-top: 80px;
   width: 600px;
   height: 100%;
   display: -webkit-box;
@@ -69,6 +76,7 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
   z-index: 1;
 }
 
@@ -166,8 +174,10 @@ button:hover {
 
 .spline {
   position: absolute;
-  top: -2%;
+  top: 0%;
   right: -5%;
+  height: 100%;
+  min-height: 100vh;
   //z-index: 1000;
 }
 
@@ -175,10 +185,14 @@ button:hover {
   html {
     font-size: 90%;
   }
+  .login-secton {
+    align-items: center;
+  }
   .container {
     justify-content: center;
     align-items: center;
     margin-left: 0;
+    margin-right: 0;
   }
 }
 

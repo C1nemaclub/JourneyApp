@@ -70,67 +70,69 @@ export default function Register() {
 
   return (
     <>
-      <div className='container'>
-        <div className='left-col'>
-          <h1 className='title'>Start discovering new adventures</h1>
-          <h1 className='reg-label'>SIGN UP</h1>
-          <form onSubmit={(e) => onSubmit(e)}>
-            <div className='form'>
-              <input
-                className='form__input'
-                type='text'
-                name='name'
-                value={formData.name}
-                onChange={(e) => onChange(e)}
-                placeholder=' '
-              />
-              <label className='form__label'>Name</label>
+      <div className='login-section'>
+        <div className='container'>
+          <div className='left-col'>
+            <h1 className='title'>Start discovering new adventures</h1>
+            <h1 className='reg-label'>SIGN UP</h1>
+            <form onSubmit={(e) => onSubmit(e)}>
+              <div className='form'>
+                <input
+                  className='form__input'
+                  type='text'
+                  name='name'
+                  value={formData.name}
+                  onChange={(e) => onChange(e)}
+                  placeholder=' '
+                />
+                <label className='form__label'>Name</label>
+              </div>
+              <div className='form'>
+                <input
+                  className='form__input'
+                  type='email'
+                  name='email'
+                  value={formData.email}
+                  onChange={(e) => onChange(e)}
+                  placeholder=' '
+                />
+                <label class='form__label'>Email</label>
+              </div>
+              <div className='form'>
+                <input
+                  className='form__input'
+                  type='password'
+                  name='password'
+                  value={formData.password}
+                  onChange={(e) => onChange(e)}
+                  placeholder=' '
+                />
+                <label className='form__label'>Password</label>
+              </div>
+              <div className='form'>
+                <input
+                  className='form__input'
+                  type='password'
+                  name='password2'
+                  value={formData.password2}
+                  onChange={(e) => onChange(e)}
+                  placeholder=' '
+                />
+                <label class='form__label'>Confirm Password</label>
+              </div>
+              <button type='submit' className='register-btn btn'>
+                SIGN UP
+              </button>
+            </form>
+            <div className='login-message message'>
+              Already have an account?{' '}
+              <Link to='/login' className='login-link'>
+                Login
+              </Link>
             </div>
-            <div className='form'>
-              <input
-                className='form__input'
-                type='email'
-                name='email'
-                value={formData.email}
-                onChange={(e) => onChange(e)}
-                placeholder=' '
-              />
-              <label class='form__label'>Email</label>
-            </div>
-            <div className='form'>
-              <input
-                className='form__input'
-                type='password'
-                name='password'
-                value={formData.password}
-                onChange={(e) => onChange(e)}
-                placeholder=' '
-              />
-              <label className='form__label'>Password</label>
-            </div>
-            <div className='form'>
-              <input
-                className='form__input'
-                type='password'
-                name='password2'
-                value={formData.password2}
-                onChange={(e) => onChange(e)}
-                placeholder=' '
-              />
-              <label class='form__label'>Confirm Password</label>
-            </div>
-            <button type='submit' className='register-btn btn'>
-              SIGN UP
-            </button>
-          </form>
-          <div className='login-message message'>
-            Already have an account?{' '}
-            <Link to='/login' className='login-link'>
-              Login
-            </Link>
           </div>
+          <div className='right-col'></div>
         </div>
-        <div className='right-col'></div>
       </div>
     </>
   );
