@@ -137,6 +137,7 @@ export default function CreatePost() {
             <div className='left-col-post'>
               <div className='input-group'>
                 <input
+                  required
                   type='text'
                   name='title'
                   value={formData.title}
@@ -146,6 +147,7 @@ export default function CreatePost() {
               </div>
               <div className='input-group'>
                 <textarea
+                  required
                   cols='4'
                   rows='6'
                   type='text'
@@ -159,6 +161,7 @@ export default function CreatePost() {
             <div className='right-col-post'>
               <div className='input-group'>
                 <input
+                  required
                   type='text'
                   name='location'
                   value={formData.location}
