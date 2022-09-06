@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Authentication from './pages/Authentication';
@@ -10,10 +10,18 @@ export const ThemeContext = createContext(null);
 
 function App() {
   const { user } = useSelector((state) => state.auth);
-  const [theme, setTheme] = useState('light');
+  //const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(
+    () => JSON.parse(localStorage.getItem('theme')) || 'light'
+  );
+
+  useEffect(() => {
+    //JSON.parse(localStorage.getItem('theme'));
+  }, []);
 
   function toggleTheme() {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    localStorage.setItem('theme', JSON.stringify(theme));
   }
 
   return (
